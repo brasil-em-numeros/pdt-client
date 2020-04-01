@@ -1,4 +1,0 @@
-[error] /Users/juliano.alves/development/opensource/pdt-client/project/Dependencies.scala:19:18: recursive value zio needs type
-[error]     val zio = zio("zio")
-[error]                  ^
-[error] one error found
