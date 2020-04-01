@@ -1,0 +1,4 @@
+[0m[[0m[31merror[0m] [0m[0m/Users/juliano.alves/development/opensource/pdt-client/src/test/scala/pdt/client/OrgaosSpec.scala:17:89: value invocations in trait Expectation cannot be accessed in zio.test.mock.Expectation[pdt.client.HttpClient.HttpClient][0m
+[0m[[0m[31merror[0m] [0m[0m    Get[OrgaoSiafi]()(equalTo("orgaos-siafi", Map("pagina" -> "1"))) returns value(Nil) invocations[0m
+[0m[[0m[31merror[0m] [0m[0m                                                                                        ^[0m
+[0m[[0m[31merror[0m] [0m[0mone error found[0m

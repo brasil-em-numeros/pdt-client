@@ -1,0 +1,36 @@
+[0m[[0m[0minfo[0m] [0m[0m[31m- Orgaos Spec[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m  [31m- siafi[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m    [31m- could not find a matching expectation[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m      [31m- pdt.client.MockHttpClient.Get called with invalid arguments[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m        [34m(orgaos-siafi,Map(pagina -> 4))[0m did not satisfy [36mequalTo((orgaos-siafi,Map(pagina -> 1)))[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m      [31m- pdt.client.MockHttpClient.Get called with invalid arguments[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m        [34m(orgaos-siafi,Map(pagina -> 25))[0m did not satisfy [36mequalTo((orgaos-siafi,Map(pagina -> 1)))[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m      [31m- pdt.client.MockHttpClient.Get called with invalid arguments[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m        [34m(orgaos-siafi,Map(pagina -> 23))[0m did not satisfy [36mequalTo((orgaos-siafi,Map(pagina -> 1)))[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m      [31m- pdt.client.MockHttpClient.Get called with invalid arguments[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m        [34m(orgaos-siafi,Map(pagina -> 26))[0m did not satisfy [36mequalTo((orgaos-siafi,Map(pagina -> 1)))[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m      [31m- pdt.client.MockHttpClient.Get called with invalid arguments[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m        [34m(orgaos-siafi,Map(pagina -> 27))[0m did not satisfy [36mequalTo((orgaos-siafi,Map(pagina -> 1)))[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m      [31m- pdt.client.MockHttpClient.Get called with invalid arguments[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m        [34m(orgaos-siafi,Map(pagina -> 29))[0m did not satisfy [36mequalTo((orgaos-siafi,Map(pagina -> 1)))[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m      [31m- pdt.client.MockHttpClient.Get called with invalid arguments[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m        [34m(orgaos-siafi,Map(pagina -> 28))[0m did not satisfy [36mequalTo((orgaos-siafi,Map(pagina -> 1)))[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m      [31m- pdt.client.MockHttpClient.Get called with invalid arguments[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m        [34m(orgaos-siafi,Map(pagina -> 6))[0m did not satisfy [36mequalTo((orgaos-siafi,Map(pagina -> 1)))[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m      [31m- pdt.client.MockHttpClient.Get called with invalid arguments[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m        [34m(orgaos-siafi,Map(pagina -> 30))[0m did not satisfy [36mequalTo((orgaos-siafi,Map(pagina -> 1)))[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m      [31m- pdt.client.MockHttpClient.Get called with invalid arguments[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m        [34m(orgaos-siafi,Map(pagina -> 31))[0m did not satisfy [36mequalTo((orgaos-siafi,Map(pagina -> 1)))[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m      [31m- pdt.client.MockHttpClient.Get called with invalid arguments[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m        [34m(orgaos-siafi,Map(pagina -> 32))[0m did not satisfy [36mequalTo((orgaos-siafi,Map(pagina -> 1)))[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m      [31m- pdt.client.MockHttpClient.Get called with invalid arguments[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m        [34m(orgaos-siafi,Map(pagina -> 33))[0m did not satisfy [36mequalTo((orgaos-siafi,Map(pagina -> 1)))[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m      [31m- pdt.client.MockHttpClient.Get called with invalid arguments[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m        [34m(orgaos-siafi,Map(pagina -> 34))[0m did not satisfy [36mequalTo((orgaos-siafi,Map(pagina -> 1)))[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m      [31m- pdt.client.MockHttpClient.Get called with invalid arguments[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m        [34m(orgaos-siafi,Map(pagina -> 22))[0m did not satisfy [36mequalTo((orgaos-siafi,Map(pagina -> 1)))[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m      [31m- pdt.client.MockHttpClient.Get called with invalid arguments[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m        [34m(orgaos-siafi,Map(pagina -> 36))[0m did not satisfy [36mequalTo((orgaos-siafi,Map(pagina -> 1)))[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m      [31m- pdt.client.MockHttpClient.Get called with invalid arguments[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m        [34m(orgaos-siafi,Map(pagina -> 37))[0m did not satisfy [36mequalTo((orgaos-siafi,Map(pagina -> 1)))[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[36mRan 1 test in 1 s 621 ms: 0 succeeded, 0 ignored, 1 failed[0m[0m

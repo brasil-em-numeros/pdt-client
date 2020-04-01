@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="8789b11d-ab3d-4ffb-a956-d93df1f9cf19" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CodeStyleSettingsInfer">
+    <option name="done" value="true" />
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand />
+    <select />
+  </component>
+  <component name="DefaultGradleProjectSettings">
+    <option name="testRunner" value="GRADLE" />
+    <option name="delegatedBuild" value="true" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="SBT">
+      <state>
+        <projects_view>
+          <tree_state>
+            <expand />
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Package Object" />
+        <option value="Class" />
+        <option value="Scala Object" />
+        <option value="Scala Class" />
+      </list>
+    </option>
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="dummy://scala-decompiled/Expectation.decompiled.java" root0="SKIP_HIGHLIGHTING" />
+  </component>
+  <component name="MacroExpansionManager">
+    <option name="directoryName" value="EFMLLlie" />
+  </component>
+  <component name="ProjectCodeStyleSettingsMigration">
+    <option name="version" value="1" />
+  </component>
+  <component name="ProjectId" id="1ZAeNXNRLDWWgyphntfRQybTAXr" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="settings.editor.selected.configurable" value="reference.projectsettings.compiler.javacompiler" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/resources" />
+    </key>
+  </component>
+  <component name="RunManager" selected="ZIO Test.OrgaosSpec">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true">
+      <option name="MAIN_CLASS_NAME" value="pdt.Main" />
+      <module name="pdt-client" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="pdt.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="OrgaosSpec" type="ZIOTestRunConfiguration" factoryName="ZIO Test" temporary="true" show_console_on_std_err="false" show_console_on_std_out="false">
+      <module name="pdt-client" />
+      <option name="allowRunningInParallel" value="false" />
+      <option name="testKind" value="Class" />
+      <option name="envs">
+        <map />
+      </option>
+      <option name="javaOptions" value="" />
+      <option name="jrePath" />
+      <option name="searchTest" value="Across module dependencies" />
+      <option name="showProgressMessages" value="true" />
+      <option name="testArgs" value="" />
+      <option name="testClassPath" value="pdt.client.OrgaosSpec" />
+      <option name="useSbt" value="false" />
+      <option name="useUiWithSbt" value="false" />
+      <option name="workingDirectory" value="$PROJECT_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="ZIO Test.OrgaosSpec" />
+        <item itemvalue="Application.Main" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SbtLocalSettings">
+    <option name="availableProjects">
+      <map>
+        <entry>
+          <key>
+            <ExternalProjectPojo>
+              <option name="name" value="pdt-client" />
+              <option name="path" value="$PROJECT_DIR$" />
+            </ExternalProjectPojo>
+          </key>
+          <value>
+            <list>
+              <ExternalProjectPojo>
+                <option name="name" value="root [file:/Users/juliano.alves/development/opensource/pdt-client/]" />
+                <option name="path" value="$PROJECT_DIR$" />
+              </ExternalProjectPojo>
+              <ExternalProjectPojo>
+                <option name="name" value="pdt-client-build" />
+                <option name="path" value="$PROJECT_DIR$/project" />
+              </ExternalProjectPojo>
+            </list>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="modificationStamps">
+      <map>
+        <entry key="$PROJECT_DIR$/build.sbt" value="1627254655" />
+        <entry key="$PROJECT_DIR$/project/Dependencies.scala" value="1175784739" />
+        <entry key="$PROJECT_DIR$/project/build.properties" value="1244562550" />
+      </map>
+    </option>
+    <option name="projectSyncType">
+      <map>
+        <entry key="$PROJECT_DIR$/../finagle-postgres" value="PREVIEW" />
+        <entry key="$PROJECT_DIR$/../quill" value="PREVIEW" />
+        <entry key="$PROJECT_DIR$/../regua" value="PREVIEW" />
+        <entry key="$PROJECT_DIR$/../../playground/cats-lab" value="PREVIEW" />
+        <entry key="$PROJECT_DIR$/../../playground/configz" value="PREVIEW" />
+        <entry key="$PROJECT_DIR$/../../playground/pfps-shopping-cart" value="PREVIEW" />
+        <entry key="$PROJECT_DIR$/../../playground/release-pager" value="PREVIEW" />
+        <entry key="$PROJECT_DIR$/../../playground/tw4b-scala" value="PREVIEW" />
+        <entry key="$PROJECT_DIR$/../../playground/zio-lab" value="PREVIEW" />
+      </map>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="8789b11d-ab3d-4ffb-a956-d93df1f9cf19" name="Default Changelist" comment="" />
+      <created>1584286285778</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1584286285778</updated>
+      <workItem from="1584286288213" duration="35963000" />
+      <workItem from="1584825843850" duration="383000" />
+      <workItem from="1584826246767" duration="3331000" />
+      <workItem from="1584965104036" duration="26226000" />
+      <workItem from="1585247280974" duration="13813000" />
+      <workItem from="1585326134179" duration="1203000" />
+      <workItem from="1585328159590" duration="1532000" />
+      <workItem from="1585329741901" duration="28000" />
+      <workItem from="1585334065015" duration="1558000" />
+      <workItem from="1585336211188" duration="304000" />
+      <workItem from="1585337131297" duration="27240000" />
+      <workItem from="1585732692088" duration="1520000" />
+      <workItem from="1585736388024" duration="16336000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="440" y="168" width="996" height="669" key="#Project_Structure" timestamp="1585340863119">
+      <screen x="0" y="23" width="1680" height="959" />
+    </state>
+    <state x="440" y="168" width="996" height="669" key="#Project_Structure/0.23.1680.959@0.23.1680.959" timestamp="1585340863119" />
+    <state x="578" y="275" key="#com.intellij.codeInsight.editorActions.RestoreReferencesDialog" timestamp="1585749077023">
+      <screen x="0" y="23" width="1680" height="959" />
+    </state>
+    <state x="578" y="275" key="#com.intellij.codeInsight.editorActions.RestoreReferencesDialog/0.23.1680.959@0.23.1680.959" timestamp="1585749077023" />
+    <state x="304" y="164" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1584826131425">
+      <screen x="0" y="23" width="1680" height="959" />
+    </state>
+    <state x="304" y="164" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1680.959@0.23.1680.959" timestamp="1584826131425" />
+    <state x="653" y="207" key="#com.intellij.ide.util.MemberChooser" timestamp="1585746273698">
+      <screen x="0" y="23" width="1680" height="959" />
+    </state>
+    <state x="653" y="207" key="#com.intellij.ide.util.MemberChooser/0.23.1680.959@0.23.1680.959" timestamp="1585746273698" />
+    <state width="1638" height="257" key="GridCell.Tab.0.bottom" timestamp="1585756739619">
+      <screen x="0" y="23" width="1680" height="959" />
+    </state>
+    <state width="1638" height="257" key="GridCell.Tab.0.bottom/0.23.1680.959@0.23.1680.959" timestamp="1585756739619" />
+    <state width="1638" height="257" key="GridCell.Tab.0.center" timestamp="1585756739618">
+      <screen x="0" y="23" width="1680" height="959" />
+    </state>
+    <state width="1638" height="257" key="GridCell.Tab.0.center/0.23.1680.959@0.23.1680.959" timestamp="1585756739618" />
+    <state width="1638" height="257" key="GridCell.Tab.0.left" timestamp="1585756739618">
+      <screen x="0" y="23" width="1680" height="959" />
+    </state>
+    <state width="1638" height="257" key="GridCell.Tab.0.left/0.23.1680.959@0.23.1680.959" timestamp="1585756739618" />
+    <state width="1638" height="257" key="GridCell.Tab.0.right" timestamp="1585756739619">
+      <screen x="0" y="23" width="1680" height="959" />
+    </state>
+    <state width="1638" height="257" key="GridCell.Tab.0.right/0.23.1680.959@0.23.1680.959" timestamp="1585756739619" />
+    <state width="1638" height="318" key="GridCell.Tab.1.bottom" timestamp="1585732566305">
+      <screen x="0" y="23" width="1680" height="959" />
+    </state>
+    <state width="1638" height="318" key="GridCell.Tab.1.bottom/0.23.1680.959@0.23.1680.959" timestamp="1585732566305" />
+    <state width="1638" height="318" key="GridCell.Tab.1.center" timestamp="1585732566305">
+      <screen x="0" y="23" width="1680" height="959" />
+    </state>
+    <state width="1638" height="318" key="GridCell.Tab.1.center/0.23.1680.959@0.23.1680.959" timestamp="1585732566305" />
+    <state width="1638" height="318" key="GridCell.Tab.1.left" timestamp="1585732566305">
+      <screen x="0" y="23" width="1680" height="959" />
+    </state>
+    <state width="1638" height="318" key="GridCell.Tab.1.left/0.23.1680.959@0.23.1680.959" timestamp="1585732566305" />
+    <state width="1638" height="318" key="GridCell.Tab.1.right" timestamp="1585732566305">
+      <screen x="0" y="23" width="1680" height="959" />
+    </state>
+    <state width="1638" height="318" key="GridCell.Tab.1.right/0.23.1680.959@0.23.1680.959" timestamp="1585732566305" />
+    <state x="517" y="335" key="com.intellij.ide.util.TipDialog" timestamp="1585736388093">
+      <screen x="0" y="23" width="1680" height="959" />
+    </state>
+    <state x="517" y="335" key="com.intellij.ide.util.TipDialog/0.23.1680.959@0.23.1680.959" timestamp="1585736388093" />
+    <state x="100" y="123" width="1480" height="759" key="dock-window-1" timestamp="1584293702666">
+      <screen x="0" y="23" width="1680" height="959" />
+    </state>
+    <state x="100" y="123" width="1480" height="759" key="dock-window-1/0.23.1680.959@0.23.1680.959" timestamp="1584293702666" />
+    <state x="100" y="123" width="1480" height="759" key="dock-window-2" timestamp="1584358139378">
+      <screen x="0" y="23" width="1680" height="959" />
+    </state>
+    <state x="100" y="123" width="1480" height="759" key="dock-window-2/0.23.1680.959@0.23.1680.959" timestamp="1584358139378" />
+    <state x="494" y="259" width="692" height="486" key="find.popup" timestamp="1585325315079">
+      <screen x="0" y="23" width="1680" height="959" />
+    </state>
+    <state x="494" y="259" width="692" height="486" key="find.popup/0.23.1680.959@0.23.1680.959" timestamp="1585325315079" />
+    <state x="505" y="231" key="run.anything.popup" timestamp="1585324807829">
+      <screen x="0" y="23" width="1680" height="959" />
+    </state>
+    <state x="505" y="231" key="run.anything.popup/0.23.1680.959@0.23.1680.959" timestamp="1585324807829" />
+    <state x="505" y="153" width="670" height="676" key="search.everywhere.popup" timestamp="1585749287183">
+      <screen x="0" y="23" width="1680" height="959" />
+    </state>
+    <state x="505" y="153" width="670" height="676" key="search.everywhere.popup/0.23.1680.959@0.23.1680.959" timestamp="1585749287183" />
+  </component>
+</project>
