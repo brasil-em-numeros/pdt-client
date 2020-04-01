@@ -42,7 +42,7 @@ object Main extends App {
 
     val program = for {
       start <- currentTime(TimeUnit.MILLISECONDS)
-      orgs <- BolsasFamilia.by(SacadoPorNis("2800308", Some("201901")))
+      orgs <- Ceafs.by(CeafRequest())
       finish <- currentTime(TimeUnit.MILLISECONDS)
       _ <- putStrLn(orgs.mkString("\n"))
       _ <- putStrLn("Execution time: " + (finish - start))

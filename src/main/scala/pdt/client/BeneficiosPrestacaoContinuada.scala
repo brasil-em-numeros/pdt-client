@@ -3,7 +3,7 @@ package pdt.client
 import io.circe.generic.auto._
 import pdt.client.decoders.localDateDecoder
 import pdt.client.HttpClient.{HttpClient, get}
-import pdt.domain.{BeneficioPrestacaoContinuada, BeneficioPrestacaoContinuadaRequest, Cpf, Nis}
+import pdt.domain._
 import pdt.implicits.HttpRequestOps
 import zio.RIO
 

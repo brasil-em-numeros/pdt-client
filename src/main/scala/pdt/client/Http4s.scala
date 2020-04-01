@@ -12,11 +12,11 @@ private[client] final case class Http4s(client: Client[Task])
   extends HttpClient.Service with Http4sClientDsl[Task] {
 
   def get[T](resource: String, parameters: Map[String, String])
-            (implicit d: Decoder[T]): Task[List[T]] = {
+            (implicit d: Decoder[T]): Task[T] = {
     val uri = Uri(path = rootUrl + resource).withQueryParams(parameters)
 
     client
-      .expect[List[T]](uri.toString())
+      .expect[T](uri.toString())
       .foldM(IO.fail(_), ZIO.succeed(_))
   }
 }

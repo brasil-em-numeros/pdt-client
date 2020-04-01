@@ -85,4 +85,75 @@ package object domain {
 
   case class BolsaFamiliaRequest(mesAno: String, codigoIbge: String, pagina: Int = 1)
 
+  case class CeafRequest(cpfSancionado: Option[String] = None,
+                         nomeSancionado: Option[String] = None,
+                         orgaoLotacao: Option[String] = None,
+                         dataPublicacaoInicio: Option[String] = None,
+                         dataPublicacaoFim: Option[String] = None,
+                         pagina: Int = 1)
+
+  case class Ceaf(id: Long,
+                  dataPublicacao: LocalDate,
+                  dataReferencia: LocalDate,
+                  punicao: Punicao,
+                  tipoPunicao: TipoPunicao,
+                  pessoa: Pessoa,
+                  orgaoLotacao: OrgaoLotacao,
+                  ufLotacaoPessoa: UfLotacaoPessoa,
+                  cargoEfetivo: String,
+                  codigoCargoComissao: String,
+                  cargoComissao: String,
+                  fundamentacao: List[Fundamentacao])
+
+  case class Punicao(nomePunido: String,
+                     portaria: String,
+                     processo: String,
+                     paginaDOU: String,
+                     secaoDOU: Int,
+                     cpfPunidoFormatado: String)
+
+  case class TipoPunicao(descricao: String)
+
+  case class Cnae(classe: String,
+                  codigoClasse: String,
+                  codigoDivisao: String,
+                  codigoGrupo: String,
+                  codigoSecao: String,
+                  codigoSubclasse: String,
+                  divisao: String,
+                  grupo: String,
+                  secao: String,
+                  subclasse: String)
+
+  case class LocalidadePessoa(descricao: String)
+
+  case class NaturezaJuridica(codigo: String, codigoTipo: String, descricao: String, descricaoTipo: String)
+
+  case class TipoPessoa(descricao: String)
+
+  case class Pessoa(nome: String,
+                    numeroInscricaoSocial: String,
+                    razaoSocialReceita: String,
+                    nomeFantasiaReceita: String,
+                    cnae: Option[Cnae],
+                    municipio: Municipio,
+                    localidadePessoa: Option[LocalidadePessoa],
+                    naturezaJuridica: Option[NaturezaJuridica],
+                    dataAbertura: Option[LocalDate],
+                    enderecoEletronico: String,
+                    numeroTelefone: String,
+                    descricaoLogradouro: String,
+                    numeroEndereco: String,
+                    complementoEndereco: String,
+                    numeroCEP: String,
+                    nomeBairro: String,
+                    codigoFormatado: String,
+                    tipoCodigo: String,
+                    tipoPessoa: Option[TipoPessoa])
+
+  case class OrgaoLotacao(siglaDaPasta: String, sigla: String, nome: String, nomeSemAcento: String)
+
+  case class UfLotacaoPessoa(codigoIBGE: String, codigoCNPJEstado: String, populacao: Long, uf: Uf)
+
+  case class Fundamentacao(codigo: String, descricao: String)
 }
