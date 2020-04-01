@@ -5,6 +5,7 @@ import java.util.concurrent.TimeUnit
 import org.http4s.client.Client
 import org.http4s.client.blaze.BlazeClientBuilder
 import pdt.client._
+import pdt.domain.BeneficioPrestacaoContinuadaRequest
 import zio._
 import zio.clock._
 import zio.console.putStrLn
@@ -41,7 +42,7 @@ object Main extends App {
 
     val program = for {
       start <- currentTime(TimeUnit.MILLISECONDS)
-      orgs <- AcordosLeniencia.all
+      orgs <- BeneficiosPrestacaoContinuada.by(BeneficioPrestacaoContinuadaRequest("201901", "2800308"))
       finish <- currentTime(TimeUnit.MILLISECONDS)
       _ <- putStrLn(orgs.mkString("\n"))
       _ <- putStrLn("Execution time: " + (finish - start))
