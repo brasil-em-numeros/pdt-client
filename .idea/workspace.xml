@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8789b11d-ab3d-4ffb-a956-d93df1f9cf19" name="Default Changelist" comment="" />
+    <list default="true" id="8789b11d-ab3d-4ffb-a956-d93df1f9cf19" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/scala/pdt/client/OrgaosSpec.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/scala/pdt/client/OrgaosSpec.scala" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -55,6 +60,9 @@
       </list>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="dummy://scala-decompiled/Expectation.decompiled.java" root0="SKIP_HIGHLIGHTING" />
   </component>
@@ -72,6 +80,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
@@ -155,6 +164,7 @@
     </option>
     <option name="modificationStamps">
       <map>
+        <entry key="$PROJECT_DIR$" value="4757283610060" />
         <entry key="$PROJECT_DIR$/build.sbt" value="1627254655" />
         <entry key="$PROJECT_DIR$/project/Dependencies.scala" value="1175784739" />
         <entry key="$PROJECT_DIR$/project/build.properties" value="1244562550" />
@@ -196,7 +206,7 @@
       <workItem from="1585336211188" duration="304000" />
       <workItem from="1585337131297" duration="27240000" />
       <workItem from="1585732692088" duration="1520000" />
-      <workItem from="1585736388024" duration="16336000" />
+      <workItem from="1585736388024" duration="17060000" />
     </task>
     <servers />
   </component>

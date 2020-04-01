@@ -9,10 +9,6 @@ import zio.test.mock.Expectation._
 import zio.test._
 
 object OrgaosSpec extends DefaultRunnableSpec {
-  val app = Orgaos.siafi
-
-  Gen.int(1, 42)
-
   val mockEnv: ULayer[HttpClient] =
     Get[OrgaoSiafi]()(equalTo("orgaos-siafi", Map("pagina" -> "1"))) returns value(Nil)
 
