@@ -9,8 +9,8 @@ import zio.{RIO, ZIO}
 
 object AcordosLeniencia {
 
-  def by(id: Long): RIO[HttpClient, List[AcordoLeniencia]] =
-    get[AcordoLeniencia](s"acordos-leniencia/$id")
+  def by(id: Long): RIO[HttpClient, AcordoLeniencia] =
+    get[AcordoLeniencia]("acordos-leniencia", id)
 
   def by(request: AcordoLenienciaRequest): RIO[HttpClient, List[AcordoLeniencia]] =
     get[AcordoLeniencia]("acordos-leniencia", request.parameters)
