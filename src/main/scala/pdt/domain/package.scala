@@ -60,4 +60,29 @@ package object domain {
                                           tipo: Tipo,
                                           valor: Double,
                                           quantidadeBeneficiados: Long)
+
+  case class DisponivelPorCpf(codigo: String,
+                              anoMesReferencia: Option[String] = None,
+                              anoMesCompetencia: Option[String] = None,
+                              pagina: Int = 1)
+
+  case class DisponivelPorNis(codigo: String,
+                              anoMesReferencia: Option[String] = None,
+                              anoMesCompetencia: Option[String] = None,
+                              pagina: Int = 1)
+
+  case class SacadoPorNis(nis: String,
+                          anoMesReferencia: Option[String] = None,
+                          anoMesCompetencia: Option[String] = None,
+                          pagina: Int = 1)
+
+  case class BolsaFamilia(id: Long,
+                          dataReferencia: LocalDate,
+                          municipio: Municipio,
+                          tipo: Tipo,
+                          valor: Double,
+                          quantidadeBeneficiados: Long)
+
+  case class BolsaFamiliaRequest(mesAno: String, codigoIbge: String, pagina: Int = 1)
+
 }
