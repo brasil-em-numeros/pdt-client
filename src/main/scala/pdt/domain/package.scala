@@ -50,7 +50,7 @@ package object domain {
 
   case class Municipio(codigoIBGE: String,
                        nomeIBGE: String,
-                       nomeIBGEsemAcento: String,
+                       nomeIBGEsemAcento: Option[String],
                        pais: String,
                        uf: Uf)
 
@@ -156,4 +156,61 @@ package object domain {
   case class UfLotacaoPessoa(codigoIBGE: String, codigoCNPJEstado: String, populacao: Long, uf: Uf)
 
   case class Fundamentacao(codigo: String, descricao: String)
+
+  case class CEISRequest(codigoSancionado: Option[String] = None,
+                         nomeSancionado: Option[String] = None,
+                         orgaoSancionador: Option[String] = None,
+                         dataInicialSancao: Option[String] = None,
+                         dataFinalSancao: Option[String] = None,
+                         pagina: Int = 1)
+
+  case class CEIS(id: Long,
+                  dataReferencia: LocalDate,
+                  dataInicioSancao: LocalDate,
+                  dataFimSancao: LocalDate,
+                  dataPublicacaoSancao: LocalDate,
+                  dataTransitadoJulgado: String,
+                  dataOrigemInformacao: LocalDate,
+                  tipoSancao: TipoSancao,
+                  fonteSancao: FonteSancao,
+                  legislacao: Legislacao,
+                  orgaoSancionador: OrgaoSancionador,
+                  sancionado: Sancionado,
+                  pessoa: Pessoa2,
+                  textoPublicacao: String,
+                  linkPublicacao: String,
+                  detalhamentoPublicacao: String,
+                  numeroProcesso: String,
+                  abrangenciaDefinidaDecisaoJudicial: String,
+                  informacoesAdicionaisDoOrgaoSancionador: String)
+
+  case class TipoSancao(descricaoResumida: String, descricaoPortal: String)
+
+  case class FonteSancao(nomeExibicao: String, telefoneContato: String, enderecoContato: String)
+
+  case class Legislacao(fundamentacaoLegal: String, descricaoFundamentacaoLegal: String)
+
+  case class OrgaoSancionador(nome: String, siglaUf: String, poder: String)
+
+  case class Sancionado(nome: String, codigoFormatado: String)
+
+  case class Pessoa2(nome: String,
+                    numeroInscricaoSocial: String,
+                    razaoSocialReceita: String,
+                    nomeFantasiaReceita: String,
+                    cnae: Option[CNAE],
+                    municipio: Municipio,
+                    localidadePessoa: String,
+                    naturezaJuridica: Option[NaturezaJuridica],
+                    dataAbertura: Option[LocalDate],
+                    enderecoEletronico: String,
+                    numeroTelefone: String,
+                    descricaoLogradouro: String,
+                    numeroEndereco: String,
+                    complementoEndereco: String,
+                    numeroCEP: String,
+                    nomeBairro: String,
+                    codigoFormatado: String,
+                    tipoCodigo: String,
+                    tipoPessoa: String)
 }
