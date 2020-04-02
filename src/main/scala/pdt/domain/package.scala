@@ -85,14 +85,14 @@ package object domain {
 
   case class BolsaFamiliaRequest(mesAno: String, codigoIbge: String, pagina: Int = 1)
 
-  case class CeafRequest(cpfSancionado: Option[String] = None,
+  case class CEAFRequest(cpfSancionado: Option[String] = None,
                          nomeSancionado: Option[String] = None,
                          orgaoLotacao: Option[String] = None,
                          dataPublicacaoInicio: Option[String] = None,
                          dataPublicacaoFim: Option[String] = None,
                          pagina: Int = 1)
 
-  case class Ceaf(id: Long,
+  case class CEAF(id: Long,
                   dataPublicacao: LocalDate,
                   dataReferencia: LocalDate,
                   punicao: Punicao,
@@ -114,7 +114,7 @@ package object domain {
 
   case class TipoPunicao(descricao: String)
 
-  case class Cnae(classe: String,
+  case class CNAE(classe: String,
                   codigoClasse: String,
                   codigoDivisao: String,
                   codigoGrupo: String,
@@ -135,7 +135,7 @@ package object domain {
                     numeroInscricaoSocial: String,
                     razaoSocialReceita: String,
                     nomeFantasiaReceita: String,
-                    cnae: Option[Cnae],
+                    cnae: Option[CNAE],
                     municipio: Municipio,
                     localidadePessoa: Option[LocalidadePessoa],
                     naturezaJuridica: Option[NaturezaJuridica],

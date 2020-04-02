@@ -7,11 +7,11 @@ import pdt.domain._
 import pdt.implicits.HttpRequestOps
 import zio.RIO
 
-object Ceafs {
+object CEAFs {
 
-  def by(id: Long): RIO[HttpClient, Ceaf] =
-    get[Ceaf]("ceaf", id)
+  def by(id: Long): RIO[HttpClient, CEAF] =
+    get[CEAF]("ceaf", id)
 
-  def by(request: CeafRequest): RIO[HttpClient, List[Ceaf]] =
-    get[Ceaf]("ceaf", request.parameters)
+  def by(request: CEAFRequest): RIO[HttpClient, List[CEAF]] =
+    get[CEAF]("ceaf", request.parameters)
 }
