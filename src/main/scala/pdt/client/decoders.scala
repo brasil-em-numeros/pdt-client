@@ -11,6 +11,6 @@ object decoders {
   private val formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy")
 
   implicit val localDateDecoder = Decoder.decodeString.emapTry { str =>
-    Try(LocalDate.parse(str, formatter)).orElse(Try(LocalDate.of(1900, 1, 1)))
+    Try(LocalDate.parse(str, formatter)).orElse(Try(LocalDate.of(0, 1, 1)))
   }
 }
