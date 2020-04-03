@@ -194,13 +194,15 @@ package object domain {
 
   case class Sancionado(nome: String, codigoFormatado: String)
 
+  case class AbrangenciaDefinidaDecisaoJudicial(descricao: String)
+
   case class Pessoa2(nome: String,
                     numeroInscricaoSocial: String,
                     razaoSocialReceita: String,
                     nomeFantasiaReceita: String,
                     cnae: Option[CNAE],
                     municipio: Municipio,
-                    localidadePessoa: String,
+                    localidadePessoa: Option[String],
                     naturezaJuridica: Option[NaturezaJuridica],
                     dataAbertura: Option[LocalDate],
                     enderecoEletronico: String,
@@ -212,5 +214,33 @@ package object domain {
                     nomeBairro: String,
                     codigoFormatado: String,
                     tipoCodigo: String,
-                    tipoPessoa: String)
+                    tipoPessoa: Option[String])
+
+  case class CNEPRequest(cnpjSancionado: Option[String] = None,
+                         nomeSancionado: Option[String] = None,
+                         orgaoSancionador: Option[String] = None,
+                         dataInicialSancao: Option[LocalDate] = None,
+                         dataFinalSancao: Option[LocalDate] = None,
+                         pagina: Int = 1)
+
+  case class CNEP(id: Long,
+                  dataReferencia: LocalDate,
+                  dataInicioSancao: LocalDate,
+                  dataFimSancao: Option[LocalDate],
+                  dataPublicacaoSancao: LocalDate,
+                  dataTransitadoJulgado: Option[LocalDate],
+                  dataOrigemInformacao: LocalDate,
+                  tipoSancao: TipoSancao,
+                  fonteSancao: FonteSancao,
+                  legislacao: Legislacao,
+                  orgaoSancionador: OrgaoSancionador,
+                  sancionado: Sancionado,
+                  valorMulta: BigDecimal,
+                  pessoa: Pessoa2,
+                  textoPublicacao: String,
+                  linkPublicacao: String,
+                  detalhamentoPublicacao: String,
+                  numeroProcesso: String,
+                  abrangenciaDefinidaDecisaoJudicial: AbrangenciaDefinidaDecisaoJudicial,
+                  informacoesAdicionaisDoOrgaoSancionador: String)
 }

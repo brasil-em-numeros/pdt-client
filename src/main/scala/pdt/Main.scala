@@ -42,7 +42,7 @@ object Main extends App {
 
     val program = for {
       start <- currentTime(TimeUnit.MILLISECONDS)
-      result <- CEISs.by(CEISRequest())
+      result <- CNEPs.by(CNEPRequest())
       finish <- currentTime(TimeUnit.MILLISECONDS)
       _ <- putStrLn(result.mkString("\n"))
       _ <- putStrLn("Execution time: " + (finish - start))

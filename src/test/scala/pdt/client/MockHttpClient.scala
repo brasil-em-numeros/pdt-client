@@ -11,13 +11,13 @@ object MockHttpClient {
     def envBuilder: URLayer[Has[Proxy], HttpClient] = MockHttpClient.envBuilder
   }
 
-  case class Get[T]() extends Tag[(String, Map[String, String]), List[T]]
+  case class Get[T]() extends Tag[(String, Map[String, String]), T]
 
   val envBuilder: URLayer[Has[Proxy], HttpClient] =
     ZLayer.fromService { invoke =>
       new HttpClient.Service {
         def get[T](uri: String, parameters: Map[String, String])
-                  (implicit d: Decoder[T]): Task[List[T]] =
+                  (implicit d: Decoder[T]): Task[T] =
           invoke(Get[T], uri, parameters)
       }
     }
