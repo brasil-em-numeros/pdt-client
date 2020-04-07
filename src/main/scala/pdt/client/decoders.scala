@@ -4,7 +4,7 @@ import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 
 import io.circe.Decoder
-import pdt.domain.AbrangenciaDefinidaDecisaoJudicial
+import pdt.domain._
 
 import scala.util.Try
 
@@ -23,8 +23,12 @@ object decoders {
   implicit val decodeAbrangenciaDefinidaDecisaoJudicial =
     decodePossiblyWrappedValue("descricao", AbrangenciaDefinidaDecisaoJudicial)
 
+  implicit val decodeLocalidadePessoa = decodePossiblyWrappedValue("descricao", LocalidadePessoa)
+
+  implicit val decodeTipoPessoa = decodePossiblyWrappedValue("descricao", TipoPessoa)
+
   private def decodePossiblyWrappedValue[A](field: String, f: String => A): Decoder[A] =
-    Decoder.decodeJsonObject.map(_.apply(field))
-      .map { case Some(value) => f(value.toString) }
-      .or(Decoder.decodeJson.map(json => f(json.toString)))
+    Decoder.decodeString.map(f).or(
+      Decoder.decodeJsonObject.map(_.apply(field).map(json => f(json.toString)).getOrElse(f("")))
+    )
 }

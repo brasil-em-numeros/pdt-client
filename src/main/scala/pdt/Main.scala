@@ -42,9 +42,9 @@ object Main extends App {
 
     val program = for {
       start <- currentTime(TimeUnit.MILLISECONDS)
-      result <- CNEPs.by(CNEPRequest())
+      result <- CNEPs.by(97600141)
       finish <- currentTime(TimeUnit.MILLISECONDS)
-      _ <- putStrLn(result.mkString("\n"))
+      _ <- putStrLn(result.toString())
       _ <- putStrLn("Execution time: " + (finish - start))
     } yield ()
 

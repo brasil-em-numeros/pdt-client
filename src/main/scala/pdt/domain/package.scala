@@ -42,7 +42,7 @@ package object domain {
 
   case class Nis(codigo: String, pagina: Int = 1)
 
-  case class BeneficioPrestacaoContinuadaRequest(mesAno: String, codigoIbge: String, pagina: Int = 1)
+  case class BPCRequest(mesAno: String, codigoIbge: String, pagina: Int = 1)
 
   case class Uf(sigla: String, nome: String)
 
@@ -54,12 +54,12 @@ package object domain {
                        pais: String,
                        uf: Uf)
 
-  case class BeneficioPrestacaoContinuada(id: Long,
-                                          dataReferencia: LocalDate,
-                                          municipio: Municipio,
-                                          tipo: Tipo,
-                                          valor: Double,
-                                          quantidadeBeneficiados: Long)
+  case class BPC(id: Long,
+                 dataReferencia: LocalDate,
+                 municipio: Municipio,
+                 tipo: Tipo,
+                 valor: BigDecimal,
+                 quantidadeBeneficiados: Long)
 
   case class DisponivelPorCpf(codigo: String,
                               anoMesReferencia: Option[String] = None,
@@ -167,21 +167,21 @@ package object domain {
   case class CEIS(id: Long,
                   dataReferencia: LocalDate,
                   dataInicioSancao: LocalDate,
-                  dataFimSancao: LocalDate,
-                  dataPublicacaoSancao: LocalDate,
-                  dataTransitadoJulgado: String,
+                  dataFimSancao: Option[LocalDate],
+                  dataPublicacaoSancao: Option[LocalDate],
+                  dataTransitadoJulgado: Option[LocalDate],
                   dataOrigemInformacao: LocalDate,
                   tipoSancao: TipoSancao,
                   fonteSancao: FonteSancao,
                   legislacao: Legislacao,
                   orgaoSancionador: OrgaoSancionador,
                   sancionado: Sancionado,
-                  pessoa: Pessoa2,
+                  pessoa: Pessoa,
                   textoPublicacao: String,
                   linkPublicacao: String,
                   detalhamentoPublicacao: String,
                   numeroProcesso: String,
-                  abrangenciaDefinidaDecisaoJudicial: String,
+                  abrangenciaDefinidaDecisaoJudicial: AbrangenciaDefinidaDecisaoJudicial,
                   informacoesAdicionaisDoOrgaoSancionador: String)
 
   case class TipoSancao(descricaoResumida: String, descricaoPortal: String)
@@ -195,26 +195,6 @@ package object domain {
   case class Sancionado(nome: String, codigoFormatado: String)
 
   case class AbrangenciaDefinidaDecisaoJudicial(descricao: String)
-
-  case class Pessoa2(nome: String,
-                    numeroInscricaoSocial: String,
-                    razaoSocialReceita: String,
-                    nomeFantasiaReceita: String,
-                    cnae: Option[CNAE],
-                    municipio: Municipio,
-                    localidadePessoa: Option[String],
-                    naturezaJuridica: Option[NaturezaJuridica],
-                    dataAbertura: Option[LocalDate],
-                    enderecoEletronico: String,
-                    numeroTelefone: String,
-                    descricaoLogradouro: String,
-                    numeroEndereco: String,
-                    complementoEndereco: String,
-                    numeroCEP: String,
-                    nomeBairro: String,
-                    codigoFormatado: String,
-                    tipoCodigo: String,
-                    tipoPessoa: Option[String])
 
   case class CNEPRequest(cnpjSancionado: Option[String] = None,
                          nomeSancionado: Option[String] = None,
@@ -236,7 +216,7 @@ package object domain {
                   orgaoSancionador: OrgaoSancionador,
                   sancionado: Sancionado,
                   valorMulta: BigDecimal,
-                  pessoa: Pessoa2,
+                  pessoa: Pessoa,
                   textoPublicacao: String,
                   linkPublicacao: String,
                   detalhamentoPublicacao: String,
