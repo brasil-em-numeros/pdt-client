@@ -1,6 +1,6 @@
 package pdt
 
-import java.time.LocalDate
+import java.time.{LocalDate, YearMonth}
 
 package object domain {
 
@@ -42,7 +42,7 @@ package object domain {
 
   case class Nis(codigo: String, pagina: Int = 1)
 
-  case class BPCRequest(mesAno: String, codigoIbge: String, pagina: Int = 1)
+  case class BPCRequest(mesAno: YearMonth, codigoIbge: String, pagina: Int = 1)
 
   case class Uf(sigla: String, nome: String)
 
@@ -83,7 +83,7 @@ package object domain {
                           valor: Double,
                           quantidadeBeneficiados: Long)
 
-  case class BolsaFamiliaRequest(mesAno: String, codigoIbge: String, pagina: Int = 1)
+  case class BolsaFamiliaRequest(mesAno: YearMonth, codigoIbge: String, pagina: Int = 1)
 
   case class CEAFRequest(cpfSancionado: Option[String] = None,
                          nomeSancionado: Option[String] = None,

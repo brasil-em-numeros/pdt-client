@@ -1,5 +1,6 @@
 package pdt
 
+import java.time.{LocalDate, YearMonth}
 import java.util.concurrent.TimeUnit
 
 import org.http4s.client.Client
@@ -42,7 +43,7 @@ object Main extends App {
 
     val program = for {
       start <- currentTime(TimeUnit.MILLISECONDS)
-      result <- CNEPs.by(97600141)
+      result <- CNEPs.by(CNEPRequest(dataInicialSancao = Some(LocalDate.of(2016, 8, 15))))
       finish <- currentTime(TimeUnit.MILLISECONDS)
       _ <- putStrLn(result.toString())
       _ <- putStrLn("Execution time: " + (finish - start))
