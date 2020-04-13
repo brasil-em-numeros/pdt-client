@@ -43,7 +43,7 @@ object Main extends App {
 
     val program = for {
       start <- currentTime(TimeUnit.MILLISECONDS)
-      result <- CNEPs.by(CNEPRequest(dataInicialSancao = Some(LocalDate.of(2016, 8, 15))))
+      result <- Contratos.by(1)
       finish <- currentTime(TimeUnit.MILLISECONDS)
       _ <- putStrLn(result.toString())
       _ <- putStrLn("Execution time: " + (finish - start))

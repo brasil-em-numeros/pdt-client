@@ -223,4 +223,109 @@ package object domain {
                   numeroProcesso: String,
                   abrangenciaDefinidaDecisaoJudicial: AbrangenciaDefinidaDecisaoJudicial,
                   informacoesAdicionaisDoOrgaoSancionador: String)
+
+  case class ContratoRequest private(dataInicial: LocalDate,
+                                     dataFinal: LocalDate,
+                                     codigoOrgao: String,
+                                     pagina: Int)
+
+  object ContratoRequest {
+    def apply(dataInicial: LocalDate, dataFinal: LocalDate, orgao: OrgaoSiafi, pagina: Int = 1) =
+      new ContratoRequest(dataInicial, dataFinal, orgao.codigo, pagina)
+  }
+
+  case class NumeroContratoRequest private(numero: String, pagina: Int = 1)
+
+  case class ContratoPoderExecutivoFederal(id: Int,
+                                           contrato: Contrato,
+                                           dataAssinatura: LocalDate,
+                                           dataFimVigencia: LocalDate,
+                                           dataInicioVigencia: LocalDate,
+                                           dataPublicacaoDOU: LocalDate,
+                                           dimCompra: DimCompra,
+                                           fornecedor: Fornecedor,
+                                           modalidadeCompra: ModalidadeCompra,
+                                           situacaoContrato: SituacaoContrato,
+                                           unidadeGestora: UnidadeGestora,
+                                           unidadeGestoraCompras: UnidadeGestoraCompras,
+                                           valorFinalCompra: BigDecimal,
+                                           valorInicialCompra: BigDecimal)
+
+  case class Contrato(fundamentoLegal: String,
+                      numero: String,
+                      numeroProcesso: String,
+                      objeto: String)
+
+  case class DimCompra(contatoResponsavel: String,
+                       numero: String,
+                       numeroProcesso: String,
+                       objeto: String)
+
+  case class Fornecedor(cnae: CNAE,
+                        codigoFormatado: String,
+                        complementoEndereco: String,
+                        dataAbertura: LocalDate,
+                        descricaoLogradouro: String,
+                        enderecoEletronico: String,
+                        localidadePessoa: LocalidadePessoa,
+                        municipio: Municipio,
+                        naturezaJuridica: NaturezaJuridica,
+                        nome: String,
+                        nomeBairro: String,
+                        nomeFantasiaReceita: String,
+                        numeroCEP: String,
+                        numeroEndereco: String,
+                        numeroInscricaoSocial: String,
+                        numeroTelefone: String,
+                        pessoaFisica: Boolean,
+                        pessoaJuridica: Boolean,
+                        razaoSocialReceita: String,
+                        tipoCodigo: String,
+                        tipoPessoa: TipoPessoa)
+
+  case class ModalidadeCompra(descricao: String)
+
+  case class SituacaoContrato(descricao: String)
+
+  case class UnidadeGestora(codigo: String,
+                            descricaoPoder: String,
+                            nome: String,
+                            nomeSemAcento: String,
+                            orgaoMaximo: OrgaoMaximo,
+                            orgaoVinculado: OrgaoVinculado)
+
+  case class OrgaoMaximo(codigo: String, nome: String, sigla: String)
+
+  case class OrgaoVinculado(cnpj: String,
+                            codigoSIAFI: String,
+                            nome: String,
+                            nomeOriginal: Option[String],
+                            nomeSemAcento: Option[String],
+                            sigla: String,
+                            siglaOriginal: Option[String],
+                            siglaSemAcento: Option[String],
+                            naturezaJuridica: Option[NaturezaJuridica])
+
+  case class UnidadeGestoraCompras(codigo: String,
+                                   descricaoPoder: String,
+                                   existeFatoDespesa: Boolean,
+                                   existeFatoReceita: Boolean,
+                                   nome: String,
+                                   nomeSemAcento: String,
+                                   orgaoMaximo: OrgaoMaximo,
+                                   orgaoVinculado: OrgaoVinculado)
+
+  case class Apostilamento(dataInclusao: LocalDate,
+                           descricao: String,
+                           numero: String,
+                           situacao: String,
+                           valor: BigDecimal)
+
+  case class DocumentosRelacionados(dataEmissao: LocalDate,
+                                    empenho: String,
+                                    empenhoResumido: String,
+                                    observacao: String,
+                                    valor: BigDecimal)
+
+  case class TermoAditivo(dataPublicacao:String, numero: Int, objetoAditivo: String)
 }
