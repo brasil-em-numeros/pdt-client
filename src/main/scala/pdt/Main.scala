@@ -41,9 +41,12 @@ object Main extends App {
     val http4sClientLayer = http4sClient.toLayer.orDie
     val httpClientLayer = http4sClientLayer >>> HttpClient.http4s
 
+    val r = ConvenioRequest(dataInicial = Some(LocalDate.of(2019, 1, 1)),
+      dataFinal = Some(LocalDate.of(2019, 1, 30)))
+
     val program = for {
       start <- currentTime(TimeUnit.MILLISECONDS)
-      result <- Contratos.by(1)
+      result <- Convenios.tipoInstrumentos()
       finish <- currentTime(TimeUnit.MILLISECONDS)
       _ <- putStrLn(result.toString())
       _ <- putStrLn("Execution time: " + (finish - start))

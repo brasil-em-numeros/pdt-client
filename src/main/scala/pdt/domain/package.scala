@@ -328,4 +328,96 @@ package object domain {
                                     valor: BigDecimal)
 
   case class TermoAditivo(dataPublicacao:String, numero: Int, objetoAditivo: String)
+
+  case class ConvenioRequest(dataInicial: Option[LocalDate] = None,
+                             dataFinal: Option[LocalDate] = None,
+                             dataUltimaLiberacaoInicial: Option[LocalDate] = None,
+                             dataUltimaLiberacaoFinal: Option[LocalDate] = None,
+                             dataVigenciaInicial: Option[LocalDate] = None,
+                             dataVigenciaFinal: Option[LocalDate] = None,
+                             convenente: Option[String] = None,
+                             tipoConvenente: Option[String] = None,
+                             numero: Option[String] = None,
+                             numeroOriginal: Option[String] = None,
+                             codigoOrgao: Option[String] = None,
+                             uf: Option[String] = None,
+                             codigoIBGE: Option[String] = None,
+                             situacao: Option[String] = None,
+                             tipoInstrumento: Option[String] = None,
+                             funcao: Option[String] = None,
+                             subfuncao: Option[String] = None,
+                             valorLiberadoDe: Option[BigDecimal] = None,
+                             valorLiberadoAte: Option[BigDecimal] = None,
+                             valorTotalDe: Option[BigDecimal] = None,
+                             valorTotalAte: Option[BigDecimal] = None,
+                             pagina: Int = 1)
+
+  case class ConvenioPoderExecutivoFederal(id: Long,
+                                           dataReferencia: LocalDate,
+                                           dataInicioVigencia: LocalDate,
+                                           dataFinalVigencia: LocalDate,
+                                           dataPublicacao: LocalDate,
+                                           dataUltimaLiberacao: Option[LocalDate],
+                                           dataConclusao: Option[LocalDate],
+                                           situacao: Situacao,
+                                           convenente: Convenente,
+                                           localidadePessoa: LocalidadePessoa,
+                                           municipioConvenente: Municipio,
+                                           orgao: Option[Orgao],
+                                           unidadeGestora: UnidadeGestora,
+                                           subfuncao: Subfuncao,
+                                           tipoInstrumento: Option[TipoInstrumento],
+                                           valor: BigDecimal,
+                                           valorLiberado: BigDecimal,
+                                           valorContrapartida:BigDecimal,
+                                           valorDaUltimaLiberacao: BigDecimal,
+                                           convenio: Convenio)
+
+  case class Situacao(codigo: String, descricao: String)
+
+  case class Convenente(numeroInscricaoSocial: String,
+                        nome: String,
+                        razaoSocialReceita: String,
+                        nomeFantasiaReceita: String,
+                        cnae: CNAE,
+                        municipio: Municipio,
+                        localidadePessoa: Option[LocalidadePessoa],
+                        naturezaJuridica: NaturezaJuridica,
+                        dataAbertura: Option[LocalDate],
+                        enderecoEletronico: String,
+                        numeroTelefone: String,
+                        descricaoLogradouro: String,
+                        numeroEndereco: String,
+                        complementoEndereco: String,
+                        numeroCEP: String,
+                        nomeBairro: String,
+                        tipoCodigo: String,
+                        codigoFormatado: String,
+                        tipoPessoa: TipoPessoa)
+
+  case class Orgao(cnpj: String,
+                   codigoSIAFI: String,
+                   descricaoPoder: String,
+                   nome: String,
+                   orgaoMaisRecente: Boolean,
+                   orgaoMaximo: OrgaoMaximo,
+                   sigla: String)
+
+  case class Subfuncao(id: Long,
+                       funcao: Funcao,
+                       subFuncao: SubFuncao0,
+                       descricaoSubFuncaoOriginal: String,
+                       subfuncaoMaisRecente: Boolean)
+
+  case class Funcao(codigo: String, descricao: String, slug: String)
+
+  case class SubFuncao0(codigo: String, descricao: String)
+
+  case class TipoInstrumento(id: Long, codigo: String, descricao: String)
+
+  case class Convenio(objeto: String, numero: Long, numeroOriginal: String)
+
+  case class NumeroConvenioRequest(numero: Long, pagina: Int = 1)
+
+  case class NumeroOriginalRequest(numeroOriginal: String, pagina: Int = 1)
 }
