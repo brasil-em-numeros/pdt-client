@@ -12,7 +12,7 @@ object Contratos {
     get[ContratoPoderExecutivoFederal]("contratos", request.parameters)
 
   def by(id: Long): RIO[HttpClient, ContratoPoderExecutivoFederal] =
-    get[ContratoPoderExecutivoFederal]("contratos", id)
+    RIO.accessM[HttpClient](_.get.get[ContratoPoderExecutivoFederal]("contratos/id", Map("id" -> id.toString)))
 
   def by(request: NumeroContratoRequest): RIO[HttpClient, List[ContratoPoderExecutivoFederal]] =
     get[ContratoPoderExecutivoFederal]("contratos/numero", request.parameters)
