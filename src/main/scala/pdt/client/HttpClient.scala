@@ -2,7 +2,9 @@ package pdt.client
 
 import io.circe.Decoder
 import org.http4s.client.Client
-import zio.{Has, RIO, Task, URLayer, ZLayer}
+import pdt.log.Logger
+import pdt.log.Logger.Logger
+import zio._
 
 object HttpClient {
   type HttpClient = Has[Service]
@@ -22,8 +24,8 @@ object HttpClient {
             (implicit d: Decoder[T]): RIO[HttpClient, T] =
     RIO.accessM[HttpClient](_.get.get[T](s"$resource/$id", Map()))
 
-  def http4s: URLayer[Has[Client[Task]], Has[Service]] =
-    ZLayer.fromService[Client[Task], Service] { http4sClient: Client[Task] =>
-      Http4s(http4sClient)
+  def http4s: URLayer[Logger with Has[Client[Task]], Has[Service]] =
+    ZLayer.fromServices[Logger.Service, Client[Task], Service] { (logger, http4sClient) =>
+      Http4s(logger, http4sClient)
     }
 }

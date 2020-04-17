@@ -1,5 +1,6 @@
 package pdt
 
+import java.io.{PrintWriter, StringWriter}
 import java.time.{LocalDate, YearMonth}
 import java.time.format.DateTimeFormatter
 
@@ -25,5 +26,13 @@ package object implicits {
           case (k, v: LocalDate) => k.name -> localDateFormatter.format(v)
           case (k, v) => k.name -> v.toString
         }
+  }
+
+  implicit class ThrowableOps(t: Throwable) {
+    def stackTrace: String = {
+      val sw = new StringWriter
+      t.printStackTrace(new PrintWriter(sw))
+      sw.toString
+    }
   }
 }

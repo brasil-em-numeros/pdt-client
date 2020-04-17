@@ -1,12 +1,11 @@
 package pdt
 
-import java.time.{LocalDate, YearMonth}
 import java.util.concurrent.TimeUnit
 
 import org.http4s.client.Client
 import org.http4s.client.blaze.BlazeClientBuilder
 import pdt.client._
-import pdt.domain._
+import pdt.log.Logger
 import zio._
 import zio.clock._
 import zio.console.putStrLn
@@ -38,11 +37,10 @@ object Main extends App {
       }
 
   private def makeProgram(http4sClient: TaskManaged[Client[Task]]): RIO[ZEnv, Unit] = {
-    val http4sClientLayer = http4sClient.toLayer.orDie
-    val httpClientLayer = http4sClientLayer >>> HttpClient.http4s
+    val loggerLayer = Logger.console
 
-    val r = ConvenioRequest(dataInicial = Some(LocalDate.of(2019, 1, 1)),
-      dataFinal = Some(LocalDate.of(2019, 1, 30)))
+    val httpClientLayer = http4sClient.toLayer.orDie
+    val http4sClientLayer = (loggerLayer ++ httpClientLayer) >>> HttpClient.http4s
 
     val program = for {
       start <- currentTime(TimeUnit.MILLISECONDS)
@@ -52,6 +50,6 @@ object Main extends App {
       _ <- putStrLn("Execution time: " + (finish - start))
     } yield ()
 
-    program.provideSomeLayer[ZEnv](httpClientLayer)
+    program.provideSomeLayer[ZEnv](http4sClientLayer)
   }
 }
