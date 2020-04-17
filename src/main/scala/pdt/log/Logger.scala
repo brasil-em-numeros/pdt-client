@@ -12,7 +12,7 @@ object Logger {
     def error(t: Throwable)(message: => String): UIO[Unit]
   }
 
-  def console: URLayer[Clock with ConsoleZIO, Has[Service]] =
+  def console: URLayer[Clock with ConsoleZIO, Logger] =
     ZLayer.fromServices[Clock.Service, ConsoleZIO.Service, Service] { (clock, console) =>
       Console(clock, console)
     }

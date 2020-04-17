@@ -2,9 +2,9 @@ package pdt.client
 
 import io.circe.generic.auto._
 import pdt.client.decoders.localDateDecoder
-import pdt.client.HttpClient.{HttpClient, get}
+import pdt.http.HttpClient.{HttpClient, get}
 import pdt.domain._
-import pdt.implicits.HttpRequestOps
+import pdt.http.implicits.HttpRequestOps
 import zio.RIO
 
 object Convenios {

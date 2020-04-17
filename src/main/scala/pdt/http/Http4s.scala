@@ -1,4 +1,4 @@
-package pdt.client
+package pdt.http
 
 import io.circe.Decoder
 import org.http4s.Uri
@@ -9,7 +9,7 @@ import pdt.log.Logger
 import zio._
 import zio.interop.catz._
 
-private[client] final case class Http4s(logger: Logger.Service, client: Client[Task])
+private[http] final case class Http4s(logger: Logger.Service, client: Client[Task])
   extends HttpClient.Service with Http4sClientDsl[Task] {
 
   def get[T](resource: String, parameters: Map[String, String])
@@ -17,10 +17,10 @@ private[client] final case class Http4s(logger: Logger.Service, client: Client[T
     val uri = Uri(path = rootUrl + resource).withQueryParams(parameters)
 
     logger.info(s"GET REQUEST: $uri") *>
-    client
-      .expect[T](uri.toString())
-      .foldM(
-        e => logger.error(e)(s"Couldn't fetch data from $uri: ${e.getMessage}") *> IO.fail(e),
-        ZIO.succeed(_))
+      client
+        .expect[T](uri.toString())
+        .foldM(
+          e => logger.error(e)(s"Couldn't fetch data from $uri: ${e.getMessage}") *> IO.fail(e),
+          ZIO.succeed(_))
   }
 }

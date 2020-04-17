@@ -1,9 +1,9 @@
 package pdt.client
 
 import io.circe.generic.auto._
-import pdt.client.HttpClient.{HttpClient, get}
+import pdt.http.HttpClient.{HttpClient, get}
 import pdt.domain.{OrgaoRequest, OrgaoSiafi, OrgaoSiape}
-import pdt.implicits.HttpRequestOps
+import pdt.http.implicits.HttpRequestOps
 import zio.{RIO, ZIO}
 
 object Orgaos {

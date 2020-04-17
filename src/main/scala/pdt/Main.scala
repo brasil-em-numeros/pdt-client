@@ -5,6 +5,7 @@ import java.util.concurrent.TimeUnit
 import org.http4s.client.Client
 import org.http4s.client.blaze.BlazeClientBuilder
 import pdt.client._
+import pdt.http.HttpClient
 import pdt.log.Logger
 import zio._
 import zio.clock._
@@ -44,7 +45,7 @@ object Main extends App {
 
     val program = for {
       start <- currentTime(TimeUnit.MILLISECONDS)
-      result <- Convenios.tipoInstrumentos()
+      result <- Orgaos.siafi
       finish <- currentTime(TimeUnit.MILLISECONDS)
       _ <- putStrLn(result.toString())
       _ <- putStrLn("Execution time: " + (finish - start))

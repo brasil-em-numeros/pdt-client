@@ -1,9 +1,10 @@
 package pdt.log
 
-import pdt.implicits.ThrowableOps
+import java.io.{PrintWriter, StringWriter}
+
 import zio.UIO
 import zio.clock._
-import zio.console.{ Console => ConsoleZIO }
+import zio.console.{Console => ConsoleZIO}
 
 private[log] final case class Console(clock: Clock.Service, console: ConsoleZIO.Service)
   extends Logger.Service {
@@ -19,6 +20,14 @@ private[log] final case class Console(clock: Clock.Service, console: ConsoleZIO.
   private def print(message: => String): UIO[Unit] =
     for {
       timestamp <- clock.currentDateTime.orDie
-      _         <- console.putStrLn(s"[$timestamp] $message")
+      _ <- console.putStrLn(s"[$timestamp] $message")
     } yield ()
+
+  private implicit class ThrowableOps(t: Throwable) {
+    def stackTrace: String = {
+      val sw = new StringWriter
+      t.printStackTrace(new PrintWriter(sw))
+      sw.toString
+    }
+  }
 }

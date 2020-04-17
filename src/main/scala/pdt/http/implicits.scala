@@ -1,13 +1,12 @@
-package pdt
+package pdt.http
 
-import java.io.{PrintWriter, StringWriter}
-import java.time.{LocalDate, YearMonth}
 import java.time.format.DateTimeFormatter
+import java.time.{LocalDate, YearMonth}
 
 import shapeless.ops.product.ToMap
 import shapeless.syntax.std.product._
 
-package object implicits {
+object implicits {
 
   private val yearMonthFormatter = DateTimeFormatter.ofPattern("yyyyMM")
   private val localDateFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy")
@@ -26,13 +25,5 @@ package object implicits {
           case (k, v: LocalDate) => k.name -> localDateFormatter.format(v)
           case (k, v) => k.name -> v.toString
         }
-  }
-
-  implicit class ThrowableOps(t: Throwable) {
-    def stackTrace: String = {
-      val sw = new StringWriter
-      t.printStackTrace(new PrintWriter(sw))
-      sw.toString
-    }
   }
 }
