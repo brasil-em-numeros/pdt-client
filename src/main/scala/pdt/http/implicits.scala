@@ -15,15 +15,20 @@ object implicits {
     def parameters(implicit toMap: ToMap.Aux[A, Symbol, Any]): Map[String, String] =
       a.toMap[Symbol, Any]
         .filter {
-          case (_, v: Option[Any]) => v.isDefined
+          case (_, v: Option[_]) => v.isDefined
           case (_, v) => v != null
         }
         .map {
-          case (k, v: Option[LocalDate]) => k.name -> localDateFormatter.format(v.get)
-          case (k, v: Option[Any]) => k.name -> v.get.toString
+          case (k, v: Option[_]) => k.name -> format(v)
           case (k, v: YearMonth) => k.name -> yearMonthFormatter.format(v)
           case (k, v: LocalDate) => k.name -> localDateFormatter.format(v)
           case (k, v) => k.name -> v.toString
         }
   }
+
+  private def format(opt: Option[_]) = opt.map {
+    case v: LocalDate => localDateFormatter.format(v)
+    case v: YearMonth => yearMonthFormatter.format(v)
+    case v => v.toString
+  }.get
 }

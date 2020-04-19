@@ -16,7 +16,7 @@ object AcordosLeniencia {
     get[AcordoLeniencia]("acordos-leniencia", request.parameters)
 
   def all: RIO[HttpClient, List[AcordoLeniencia]] = {
-    val tasks = (1 to 5).map(p => by(AcordoLenienciaRequest(p)))
+    val tasks = (1 to 5).map(p => by(AcordoLenienciaRequest(pagina = p)))
 
     ZIO.collectAllPar(tasks)
       .foldM(

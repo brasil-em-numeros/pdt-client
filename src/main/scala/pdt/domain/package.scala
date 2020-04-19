@@ -14,17 +14,12 @@ package object domain {
 
   case class OrgaoSiape(codigo: String, codigoDescricaoFormatado: String, descricao: String)
 
-  case class AcordoLenienciaRequest(cnpjSancionado: Option[String],
-                                    nomeSancionado: Option[String],
-                                    situacao: Option[String],
-                                    dataInicialSancao: Option[LocalDate],
-                                    dataFinalSancao: Option[LocalDate],
+  case class AcordoLenienciaRequest(cnpjSancionado: Option[String] = None,
+                                    nomeSancionado: Option[String] = None,
+                                    situacao: Option[String] = None,
+                                    dataInicialSancao: Option[LocalDate] = None,
+                                    dataFinalSancao: Option[LocalDate] = None,
                                     pagina: Int = 1)
-
-  object AcordoLenienciaRequest {
-    def apply(pagina: Integer): AcordoLenienciaRequest =
-      new AcordoLenienciaRequest(None, None, None, None, None, pagina)
-  }
 
   case class AcordoLeniencia(id: Long,
                              nomeEmpresa: String,
