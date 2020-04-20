@@ -1,4 +1,4 @@
-import Dependencies._
+import Dependencies.Libraries._
 
 resolvers += Resolver.sonatypeRepo("releases")
 resolvers += Resolver.sonatypeRepo("snapshots")
@@ -11,18 +11,18 @@ lazy val root = (project in file("."))
     scalaVersion := "2.13.1",
     maxErrors := 3,
     libraryDependencies ++= Seq(
-        Libraries.zio,
-        Libraries.zioStreams,
-        Libraries.zioInteropCats,
-        Libraries.http4sDsl,
-        Libraries.http4sClient,
-        Libraries.http4sCirce,
-        Libraries.circeCore,
-        Libraries.circeGeneric,
-        Libraries.circeParser,
-        Libraries.logback,
+        zio,
+        zioStreams,
+        zioInteropCats,
+        http4sDsl,
+        http4sClient,
+        http4sCirce,
+        circeCore,
+        circeGeneric,
+        circeParser,
+        logback,
 
-        Libraries.zioTestSbt
+        zioTestSbt
     ),
     testFrameworks := Seq(new TestFramework("zio.test.sbt.ZTestFramework"))
   )
