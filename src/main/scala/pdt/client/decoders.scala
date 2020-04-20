@@ -1,6 +1,6 @@
 package pdt.client
 
-import java.time.LocalDate
+import java.time.{LocalDate, YearMonth}
 import java.time.format.DateTimeFormatter
 
 import io.circe.{Decoder, DecodingFailure}
@@ -9,11 +9,16 @@ import pdt.domain._
 import scala.util.Try
 
 object decoders {
-  private val formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy")
+  private val localDateFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy")
+  private val yearMonthFormatter = DateTimeFormatter.ofPattern("yyyyMM")
 
   private val emptyLocalDateDecoder = Decoder.decodeString.map(_ => LocalDate.of(0, 1, 1))
 
-  implicit val localDateDecoder = Decoder.decodeLocalDateWithFormatter(formatter).or(emptyLocalDateDecoder)
+  implicit val localDateDecoder: Decoder[LocalDate] =
+    Decoder.decodeLocalDateWithFormatter(localDateFormatter).or(emptyLocalDateDecoder)
+
+  implicit val yearMonthDecoder: Decoder[YearMonth] =
+    Decoder.decodeInt.map(v => YearMonth.parse(v.toString, yearMonthFormatter))
 
   implicit val bigDecimalDecoder =
     Decoder.decodeString.emapTry { str =>

@@ -1,10 +1,12 @@
 package pdt
 
+import java.time.YearMonth
 import java.util.concurrent.TimeUnit
 
 import org.http4s.client.Client
 import org.http4s.client.blaze.BlazeClientBuilder
 import pdt.client._
+import pdt.domain._
 import pdt.http.HttpClient
 import pdt.log.Logger
 import zio._
@@ -45,7 +47,9 @@ object Main extends App {
 
     val program = for {
       start <- currentTime(TimeUnit.MILLISECONDS)
-      result <- Orgaos.siafi
+      result <- DespesasPublicas.recursosRecebidos(RecursoRecebidoRequest(YearMonth.of(2020, 1), YearMonth.of(2020, 2)))
+        //BPCs.by(BPCRequest(YearMonth.of(2020, 1), "1234"))
+
       finish <- currentTime(TimeUnit.MILLISECONDS)
       _ <- putStrLn(result.toString())
       _ <- putStrLn("Execution time: " + (finish - start))

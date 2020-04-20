@@ -22,7 +22,11 @@ object HttpClient {
 
   def get[T](resource: String, id: Long)
             (implicit d: Decoder[T]): RIO[HttpClient, T] =
-    RIO.accessM[HttpClient](_.get.get[T](s"$resource/$id", Map()))
+    get[T](resource, id.toString)
+
+  def get[T](resource: String, pathParameter: String)
+            (implicit d: Decoder[T]): RIO[HttpClient, T] =
+    RIO.accessM[HttpClient](_.get.get[T](s"$resource/$pathParameter", Map()))
 
   def http4s: URLayer[Logger with Has[Client[Task]], HttpClient] =
     ZLayer.fromServices[Logger.Service, Client[Task], Service] { (logger, http4sClient) =>

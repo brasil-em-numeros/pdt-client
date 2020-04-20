@@ -322,7 +322,7 @@ package object domain {
                                     observacao: String,
                                     valor: BigDecimal)
 
-  case class TermoAditivo(dataPublicacao:String, numero: Int, objetoAditivo: String)
+  case class TermoAditivo(dataPublicacao: String, numero: Int, objetoAditivo: String)
 
   case class ConvenioRequest(dataInicial: Option[LocalDate] = None,
                              dataFinal: Option[LocalDate] = None,
@@ -364,7 +364,7 @@ package object domain {
                                            tipoInstrumento: Option[TipoInstrumento],
                                            valor: BigDecimal,
                                            valorLiberado: BigDecimal,
-                                           valorContrapartida:BigDecimal,
+                                           valorContrapartida: BigDecimal,
                                            valorDaUltimaLiberacao: BigDecimal,
                                            convenio: Convenio)
 
@@ -415,4 +415,161 @@ package object domain {
   case class NumeroConvenioRequest(numero: Long, pagina: Int = 1)
 
   case class NumeroOriginalRequest(numeroOriginal: String, pagina: Int = 1)
+
+  case class DocumentoRequest(unidadeGestora: Option[String] = None,
+                              gestao: Option[String] = None,
+                              dataEmissao: LocalDate,
+                              fase: Int,
+                              pagina: Int = 1)
+
+  case class FavorecidoRequest(codigoPessoa: String,
+                               fase: Int,
+                               ano: Int,
+                               ug: Option[String],
+                               gestao: Option[String],
+                               pagina: Int = 1)
+
+  case class Documento(acao: String,
+                       categoria: String,
+                       codigoFavorecido: String,
+                       data: String,
+                       documento: String,
+                       documentoResumido: String,
+                       elemento: String,
+                       especie: String,
+                       fase: String,
+                       favorecido: String,
+                       funcao: String,
+                       grupo: String,
+                       localizadorGasto: String,
+                       modalidade: String,
+                       nomeFavorecido: String,
+                       numeroProcesso: String,
+                       observacao: String,
+                       orgao: String,
+                       orgaoSuperior: String,
+                       programa: String,
+                       subfuncao: String,
+                       subtitulo: String,
+                       ufFavorecido: String,
+                       ug: String,
+                       uo: String,
+                       valor: String)
+
+  case class DocumentoRelacionadoRequest(codigoDocumento: String, fase: Int)
+
+  case class DocumentoRelacionado(data: String,
+                                  documento: String,
+                                  documentoResumido: String,
+                                  elementoDespesa: String,
+                                  especie: String,
+                                  fase: String,
+                                  favorecido: String,
+                                  orgaoSuperior: String,
+                                  orgaoVinculado: String,
+                                  unidadeGestora: String,
+                                  valor: String)
+
+  case class DespesasPorOrgaoRequest(ano: Int,
+                                     orgaoSuperior: Option[String] = None,
+                                     orgao: Option[String] = None,
+                                     pagina: Int = 1)
+
+  case class Despesa(ano: Int,
+                     orgao: String,
+                     codigoOrgao: String,
+                     orgaoSuperior: String,
+                     codigoOrgaoSuperior: String,
+                     empenhado: BigDecimal,
+                     liquidado: BigDecimal,
+                     pago: BigDecimal)
+
+  case class EmpenhoImpactadoRequest(codigoDocumento: String, fase: Int, pagina: Int = 1)
+
+  case class EmpenhoImpactado(empenho: String,
+                              empenhoResumido: String,
+                              subitem: String,
+                              valorLiquidado: String,
+                              valorPago: String,
+                              valorRestoCancelado: String,
+                              valorRestoInscrito: String,
+                              valorRestoPago: String)
+
+  case class FavorecidoPorDocumentoRequest(codigoDocumento: String, pagina: Int = 1)
+
+  case class FavorecidoFinal(codigoFavorecidoDespesa: String,
+                             codigoFavorecidoFinal: String,
+                             codigoListaCredor: String,
+                             codigoOrgaoSuperior: String,
+                             codigoOrgaoVinculado: String,
+                             codigoPagamento: String,
+                             codigoUnidadeGestora: String,
+                             dataCarga: String,
+                             municipioFavorecidoFinal: String,
+                             nomeFavorecidoDespesa: String,
+                             nomeFavorecidoFinal: String,
+                             orgaoSuperior: String,
+                             orgaoVinculado: String,
+                             skFatDW: Int,
+                             skPessoaDespesa: Int,
+                             skPessoaFinal: Int,
+                             tipoDocumento: String,
+                             tipoFavorecidoDespesa: String,
+                             tipoFavorecidoFinal: String,
+                             tipoOB: String,
+                             ufFavorecidoFinal: String,
+                             unidadeGestora: String,
+                             valorFinal: String)
+
+  case class FuncionalProgramaticaRequest(ano: Int,
+                                          funcao: Option[String] = None,
+                                          subfuncao: Option[String] = None,
+                                          programa: Option[String] = None,
+                                          acao: Option[String] = None,
+                                          pagina: Int = 1)
+
+  case class FuncionalProgramatica(acao: String,
+                                   ano: Int,
+                                   codigoAcao: String,
+                                   codigoFuncao: String,
+                                   codigoPrograma: String,
+                                   codigoSubfuncao: String,
+                                   empenhado: String,
+                                   funcao: String,
+                                   liquidado: String,
+                                   pago: String,
+                                   programa: String,
+                                   subfuncao: String)
+
+  case class RecursoRecebidoRequest(mesAnoInicio: YearMonth,
+                                    mesAnoFim: YearMonth,
+                                    nomeFavorecido: Option[String] = None,
+                                    codigoFavorecido: Option[String] = None,
+                                    tipoFavorecido: Option[String] = None,
+                                    uf: Option[String] = None,
+                                    codigoIBGE: Option[String] = None,
+                                    orgaoSuperior: Option[String] = None,
+                                    orgao: Option[String] = None,
+                                    unidadeGestora: Option[String] = None,
+                                    pagina: Int = 1)
+
+  case class RecursoRecebido(anoMes: YearMonth,
+                             codigoFormatado: String,
+                             codigoOrgao: String,
+                             codigoOrgaoSuperior: String,
+                             codigoUG: String,
+                             municipioPessoa: String,
+                             nomeOrgao: String,
+                             nomeOrgaoSuperior: String,
+                             nomePessoa: String,
+                             nomeUG: String,
+                             siglaUFPessoa: String,
+                             tipoPessoa: String,
+                             valor: BigDecimal)
+
+  case class SubitemDeEmpenho(descricao: String,
+                              quantidade: Int,
+                              subitem: String,
+                              valorTotal: BigDecimal,
+                              valorUnitario: BigDecimal)
 }
