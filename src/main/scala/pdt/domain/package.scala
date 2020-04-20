@@ -602,4 +602,30 @@ package object domain {
                              data: LocalDate,
                              especieTipo: String,
                              fase: String)
+
+  case class CEPIMRequest(cnpjSancionado: Option[String] = None,
+                          nomeSancionado: Option[String] = None,
+                          ufSancionado: Option[String] = None,
+                          orgaoEntidade: Option[String] = None,
+                          pagina: Int = 1)
+
+  case class CEPIM(id: Long,
+                   dataReferencia: LocalDate,
+                   motivo: Motivo,
+                   orgaoSuperior: OrgaoSuperior,
+                   pessoaJuridica: Pessoa,
+                   convenio: ConvenioCEPIM,
+                   codigoConvenio: Option[String])
+
+  case class Motivo(descricao: String)
+
+  case class OrgaoSuperior(nome: String,
+                           codigoSIAFI: String,
+                           cnpj: String,
+                           sigla: String,
+                           descricaoPoder: String,
+                           orgaoMaisRecente: Option[Boolean],
+                           orgaoMaximo: OrgaoMaximo)
+
+  case class ConvenioCEPIM(codigo: String, objeto: String, numero: String)
 }

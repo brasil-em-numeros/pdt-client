@@ -25,14 +25,18 @@ object decoders {
       Try(BigDecimal(str.replace(".", "").replace(",", ".")))
     }.or(Decoder.decodeBigDecimal)
 
-  implicit val decodeAbrangenciaDefinidaDecisaoJudicial =
-    decodePossiblyWrappedValue(AbrangenciaDefinidaDecisaoJudicial)
+  implicit val abrangenciaDefinidaDecisaoJudicialDecoder =
+    decoderForPossiblyWrappedValue(AbrangenciaDefinidaDecisaoJudicial)
 
-  implicit val decodeLocalidadePessoa = decodePossiblyWrappedValue(LocalidadePessoa)
+  implicit val localidadePessoaDecoder: Decoder[LocalidadePessoa] =
+    decoderForPossiblyWrappedValue(LocalidadePessoa)
 
-  implicit val decodeTipoPessoa = decodePossiblyWrappedValue(TipoPessoa)
+  implicit val tipoPessoaDecoder: Decoder[TipoPessoa] =
+    decoderForPossiblyWrappedValue(TipoPessoa)
 
-  private def decodePossiblyWrappedValue[A](f: String => A): Decoder[A] =
+  implicit val motivoDecoder: Decoder[Motivo] = decoderForPossiblyWrappedValue(Motivo)
+
+  private def decoderForPossiblyWrappedValue[A](f: String => A): Decoder[A] =
     Decoder.decodeJsonObject.map(_.apply("descricao")).map {
       case Some(json) => f(json.asString.get)
       case None => throw DecodingFailure("deu ruim", Nil)

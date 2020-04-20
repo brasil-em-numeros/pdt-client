@@ -54,27 +54,27 @@ object decodersSpec extends DefaultRunnableSpec {
 
   val possiblyWrappedValueDecoderSuite = suite("Possibly Wrapped Value decoder")(
     test("decodes AbrangenciaDefinidaDecisaoJudicial from string") {
-      val decoded = decode(""" "valor" """)(decodeAbrangenciaDefinidaDecisaoJudicial)
+      val decoded = decode(""" "valor" """)(abrangenciaDefinidaDecisaoJudicialDecoder)
       assert(decoded)(isRight(equalTo(AbrangenciaDefinidaDecisaoJudicial("valor"))))
     },
     test("decodes AbrangenciaDefinidaDecisaoJudicial from object") {
-      val decoded = decode(""" { "descricao" : "valor" } """)(decodeAbrangenciaDefinidaDecisaoJudicial)
+      val decoded = decode(""" { "descricao" : "valor" } """)(abrangenciaDefinidaDecisaoJudicialDecoder)
       assert(decoded)(isRight(equalTo(AbrangenciaDefinidaDecisaoJudicial("valor"))))
     },
     test("decodes LocalidadePessoa from string") {
-      val decoded = decode(""" "valor" """)(decodeLocalidadePessoa)
+      val decoded = decode(""" "valor" """)(localidadePessoaDecoder)
       assert(decoded)(isRight(equalTo(LocalidadePessoa("valor"))))
     },
     test("decodes LocalidadePessoa from object") {
-      val decoded = decode(""" { "descricao" : "valor" } """)(decodeLocalidadePessoa)
+      val decoded = decode(""" { "descricao" : "valor" } """)(localidadePessoaDecoder)
       assert(decoded)(isRight(equalTo(LocalidadePessoa("valor"))))
     },
     test("decodes TipoPessoa from string") {
-      val decoded = decode(""" "valor" """)(decodeTipoPessoa)
+      val decoded = decode(""" "valor" """)(tipoPessoaDecoder)
       assert(decoded)(isRight(equalTo(TipoPessoa("valor"))))
     },
     test("decodes TipoPessoa from object") {
-      val decoded = decode(""" { "descricao" : "valor" } """)(decodeTipoPessoa)
+      val decoded = decode(""" { "descricao" : "valor" } """)(tipoPessoaDecoder)
       assert(decoded)(isRight(equalTo(TipoPessoa("valor"))))
     }
   )

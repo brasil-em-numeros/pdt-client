@@ -47,7 +47,7 @@ object Main extends App {
 
     val program = for {
       start <- currentTime(TimeUnit.MILLISECONDS)
-      result <- EmendasParlamentares.documentos("202081000223")
+      result <- CEPIMs.by(CEPIMRequest())
 
       finish <- currentTime(TimeUnit.MILLISECONDS)
       _ <- putStrLn(result.toString())
