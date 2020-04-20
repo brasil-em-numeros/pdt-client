@@ -572,4 +572,34 @@ package object domain {
                               subitem: String,
                               valorTotal: BigDecimal,
                               valorUnitario: BigDecimal)
+
+  case class EmendaParlamentarRequest(codigoEmenda: Option[String] = None,
+                                      numeroEmenda: Option[String] = None,
+                                      nomeAutor: Option[String] = None,
+                                      ano: Option[Int] = None,
+                                      codigoFuncao: Option[String] = None,
+                                      codigoSubfuncao: Option[String] = None,
+                                      pagina: Int = 1)
+
+  case class EmendaParlamentar(ano: Int,
+                               autor: String,
+                               codigoEmenda: String,
+                               funcao: String,
+                               localidadeDoGasto: String,
+                               nomeAutor: Option[String],
+                               numeroEmenda: String,
+                               subfuncao: String,
+                               valorEmpenhado: BigDecimal,
+                               valorLiquidado: BigDecimal,
+                               valorPago: BigDecimal,
+                               valorRestoAPagar: BigDecimal,
+                               valorRestoCancelado: BigDecimal,
+                               valorRestoInscrito: BigDecimal,
+                               valorRestoPago: BigDecimal)
+
+  case class EmendaDocumento(codigoDocumento: String,
+                             codigoDocumentoResumido: String,
+                             data: LocalDate,
+                             especieTipo: String,
+                             fase: String)
 }

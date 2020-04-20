@@ -47,8 +47,7 @@ object Main extends App {
 
     val program = for {
       start <- currentTime(TimeUnit.MILLISECONDS)
-      result <- DespesasPublicas.recursosRecebidos(RecursoRecebidoRequest(YearMonth.of(2020, 1), YearMonth.of(2020, 2)))
-        //BPCs.by(BPCRequest(YearMonth.of(2020, 1), "1234"))
+      result <- EmendasParlamentares.documentos("202081000223")
 
       finish <- currentTime(TimeUnit.MILLISECONDS)
       _ <- putStrLn(result.toString())
