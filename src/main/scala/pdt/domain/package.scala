@@ -646,4 +646,40 @@ package object domain {
                    valor: BigDecimal)
 
   case class TipoSafra(id: Long, descricao: String, descricaoDetalhada: String)
+
+  case class GastoRequest(mesExtratoInicio: Option[YearMonth] = None,
+                          mesExtratoFim: Option[YearMonth] = None,
+                          dataTransacaoInicio: Option[LocalDate] = None,
+                          dataTransacaoFim: Option[LocalDate] = None,
+                          tipoCartao: Option[Int] = None,
+                          codigoOrgao: Option[String] = None,
+                          cpfPortador: Option[String] = None,
+                          cpfCnpjFavorecido: Option[String] = None,
+                          valorDe: Option[BigDecimal] = None,
+                          valorAte: Option[BigDecimal] = None,
+                          pagina: Int = 1)
+
+  case class Gasto(id: Long,
+                   mesExtrato: YearMonth,
+                   dataTransacao: LocalDate,
+                   valorTransacao: BigDecimal,
+                   tipoCartao: TipoCartao,
+                   estabelecimento: Pessoa,
+                   unidadeGestora: GastoUnidadeGestora,
+                   portador: Portador)
+
+  case class TipoCartao(id: Long, codigo: String, descricao: String)
+
+  case class GastoUnidadeGestora(codigo: String,
+                                 nome: String,
+                                 orgaoVinculado: GastoOrgaoVinculado)
+
+  case class GastoOrgaoVinculado(nome: String,
+                                 codigoSIAFI: String,
+                                 cnpj: String,
+                                 sigla: String,
+                                 descricaoPoder: String,
+                                 orgaoMaximo: OrgaoMaximo)
+
+  case class Portador(codigoFormatado: String, nome: String)
 }

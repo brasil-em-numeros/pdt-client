@@ -45,9 +45,12 @@ object Main extends App {
     val httpClientLayer = http4sClient.toLayer.orDie
     val http4sClientLayer = (loggerLayer ++ httpClientLayer) >>> HttpClient.http4s
 
+    val inicio = Some(YearMonth.of(2019, 1))
+    val fim = Some(YearMonth.of(2019, 12))
+
     val program = for {
       start <- currentTime(TimeUnit.MILLISECONDS)
-      result <- CEPIMs.by(CEPIMRequest())
+      result <- GastosCartaoPagamento.by(GastoRequest(inicio, fim))
 
       finish <- currentTime(TimeUnit.MILLISECONDS)
       _ <- putStrLn(result.toString())
