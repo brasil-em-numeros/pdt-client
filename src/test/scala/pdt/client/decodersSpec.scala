@@ -6,7 +6,6 @@ import io.circe.parser.decode
 import pdt.client.decoders._
 import pdt.domain._
 import zio.test.Assertion._
-import zio.test.Eql.eqlReflexive
 import zio.test._
 
 object decodersSpec extends DefaultRunnableSpec {
@@ -15,7 +14,7 @@ object decodersSpec extends DefaultRunnableSpec {
       localDateDecoderSuite,
       yearMonthDecoderSuite,
       bigDecimalDecoderSuite,
-      possiblyWrappedValueDecoderSuite)
+      descricaoDecoderSuite)
 
   val localDateDecoderSuite = suite("LocalDate decoder")(
     test("decodes LocalDate") {
@@ -33,8 +32,14 @@ object decodersSpec extends DefaultRunnableSpec {
   )
 
   val yearMonthDecoderSuite = suite("YearMonth decoder")(
-    test("decodes YearMonth from integer") {
-      val decoded = decode("202001")(yearMonthDecoder)
+    test("decodes YearMonth from integer yyyyMM") {
+      val decoded = decode(""" 202001 """)(yearMonthDecoder)
+      val expected = YearMonth.of(2020, 1)
+
+      assert(decoded)(isRight(equalTo(expected)))
+    },
+    test("decodes YearMonth from String M``/yyyy") {
+      val decoded = decode(""" "01/2020" """)(yearMonthDecoder)
       val expected = YearMonth.of(2020, 1)
 
       assert(decoded)(isRight(equalTo(expected)))
@@ -52,30 +57,14 @@ object decodersSpec extends DefaultRunnableSpec {
     }
   )
 
-  val possiblyWrappedValueDecoderSuite = suite("Possibly Wrapped Value decoder")(
-    test("decodes AbrangenciaDefinidaDecisaoJudicial from string") {
-      val decoded = decode(""" "valor" """)(abrangenciaDefinidaDecisaoJudicialDecoder)
-      assert(decoded)(isRight(equalTo(AbrangenciaDefinidaDecisaoJudicial("valor"))))
+  val descricaoDecoderSuite = suite("Descricao decoder")(
+    test("decodes Descricao from string") {
+      val decoded = decode(""" "valor" """)(descricaoDecoder)
+      assert(decoded)(isRight(equalTo(Descricao("valor"))))
     },
-    test("decodes AbrangenciaDefinidaDecisaoJudicial from object") {
-      val decoded = decode(""" { "descricao" : "valor" } """)(abrangenciaDefinidaDecisaoJudicialDecoder)
-      assert(decoded)(isRight(equalTo(AbrangenciaDefinidaDecisaoJudicial("valor"))))
-    },
-    test("decodes LocalidadePessoa from string") {
-      val decoded = decode(""" "valor" """)(localidadePessoaDecoder)
-      assert(decoded)(isRight(equalTo(LocalidadePessoa("valor"))))
-    },
-    test("decodes LocalidadePessoa from object") {
-      val decoded = decode(""" { "descricao" : "valor" } """)(localidadePessoaDecoder)
-      assert(decoded)(isRight(equalTo(LocalidadePessoa("valor"))))
-    },
-    test("decodes TipoPessoa from string") {
-      val decoded = decode(""" "valor" """)(tipoPessoaDecoder)
-      assert(decoded)(isRight(equalTo(TipoPessoa("valor"))))
-    },
-    test("decodes TipoPessoa from object") {
-      val decoded = decode(""" { "descricao" : "valor" } """)(tipoPessoaDecoder)
-      assert(decoded)(isRight(equalTo(TipoPessoa("valor"))))
+    test("decodes Descricao from object") {
+      val decoded = decode(""" { "descricao" : "valor" } """)(descricaoDecoder)
+      assert(decoded)(isRight(equalTo(Descricao("valor"))))
     }
   )
 }

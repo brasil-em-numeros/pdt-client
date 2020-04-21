@@ -1,7 +1,7 @@
 package pdt.client
 
-import java.time.{LocalDate, YearMonth}
 import java.time.format.DateTimeFormatter
+import java.time.{LocalDate, YearMonth}
 
 import io.circe.{Decoder, DecodingFailure}
 import pdt.domain._
@@ -22,27 +22,13 @@ object decoders {
     Decoder.decodeInt.map(v => YearMonth.parse(v.toString, yearMonth))
       .or(Decoder.decodeYearMonthWithFormatter(`month/year`))
 
-  implicit val bigDecimalDecoder =
+  implicit val bigDecimalDecoder: Decoder[BigDecimal] =
     Decoder.decodeString.emapTry { str =>
       Try(BigDecimal(str.replace(".", "").replace(",", ".")))
     }.or(Decoder.decodeBigDecimal)
 
-  implicit val abrangenciaDefinidaDecisaoJudicialDecoder =
-    decoderForPossiblyWrappedValue(AbrangenciaDefinidaDecisaoJudicial)
-
-  implicit val localidadePessoaDecoder: Decoder[LocalidadePessoa] =
-    decoderForPossiblyWrappedValue(LocalidadePessoa)
-
-  implicit val tipoPessoaDecoder: Decoder[TipoPessoa] =
-    decoderForPossiblyWrappedValue(TipoPessoa)
-
-  implicit val motivoDecoder: Decoder[Motivo] = decoderForPossiblyWrappedValue(Motivo)
-
-  implicit val modalidadeLicitacaoDecoder: Decoder[ModalidadeLicitacao] =
-    decoderForPossiblyWrappedValue(ModalidadeLicitacao)
-
-  implicit val instrumentoLegalDecoder: Decoder[InstrumentoLegal] =
-    decoderForPossiblyWrappedValue(InstrumentoLegal)
+  implicit val descricaoDecoder: Decoder[Descricao] =
+    decoderForPossiblyWrappedValue(Descricao)
 
   private def decoderForPossiblyWrappedValue[A](f: String => A): Decoder[A] =
     Decoder.decodeJsonObject.map(_.apply("descricao")).map {

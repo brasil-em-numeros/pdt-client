@@ -50,7 +50,7 @@ object Main extends App {
 
     val program = for {
       start <- currentTime(TimeUnit.MILLISECONDS)
-      result <- Licitacoes.by(314406224)
+      result <- CEAFs.by(CEAFRequest())
 
       finish <- currentTime(TimeUnit.MILLISECONDS)
       _ <- putStrLn(result.toString())

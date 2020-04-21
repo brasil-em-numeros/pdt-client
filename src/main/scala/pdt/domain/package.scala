@@ -89,7 +89,7 @@ package object domain {
                   dataPublicacao: LocalDate,
                   dataReferencia: LocalDate,
                   punicao: Punicao,
-                  tipoPunicao: TipoPunicao,
+                  tipoPunicao: Descricao,
                   pessoa: Pessoa,
                   orgaoLotacao: OrgaoLotacao,
                   ufLotacaoPessoa: UfLotacaoPessoa,
@@ -105,7 +105,7 @@ package object domain {
                      secaoDOU: Int,
                      cpfPunidoFormatado: String)
 
-  case class TipoPunicao(descricao: String)
+  case class Descricao(descricao: String)
 
   case class CNAE(classe: String,
                   codigoClasse: String,
@@ -118,11 +118,7 @@ package object domain {
                   secao: String,
                   subclasse: String)
 
-  case class LocalidadePessoa(descricao: String)
-
   case class NaturezaJuridica(codigo: String, codigoTipo: String, descricao: String, descricaoTipo: String)
-
-  case class TipoPessoa(descricao: String)
 
   case class Pessoa(nome: String,
                     numeroInscricaoSocial: String,
@@ -130,7 +126,7 @@ package object domain {
                     nomeFantasiaReceita: String,
                     cnae: Option[CNAE],
                     municipio: Municipio,
-                    localidadePessoa: Option[LocalidadePessoa],
+                    localidadePessoa: Option[Descricao],
                     naturezaJuridica: Option[NaturezaJuridica],
                     dataAbertura: Option[LocalDate],
                     enderecoEletronico: String,
@@ -142,7 +138,7 @@ package object domain {
                     nomeBairro: String,
                     codigoFormatado: String,
                     tipoCodigo: String,
-                    tipoPessoa: Option[TipoPessoa])
+                    tipoPessoa: Option[Descricao])
 
   case class OrgaoLotacao(siglaDaPasta: String, sigla: String, nome: String, nomeSemAcento: String)
 
@@ -174,7 +170,7 @@ package object domain {
                   linkPublicacao: String,
                   detalhamentoPublicacao: String,
                   numeroProcesso: String,
-                  abrangenciaDefinidaDecisaoJudicial: AbrangenciaDefinidaDecisaoJudicial,
+                  abrangenciaDefinidaDecisaoJudicial: Descricao,
                   informacoesAdicionaisDoOrgaoSancionador: String)
 
   case class TipoSancao(descricaoResumida: String, descricaoPortal: String)
@@ -186,8 +182,6 @@ package object domain {
   case class OrgaoSancionador(nome: String, siglaUf: String, poder: String)
 
   case class Sancionado(nome: String, codigoFormatado: String)
-
-  case class AbrangenciaDefinidaDecisaoJudicial(descricao: String)
 
   case class CNEPRequest(cnpjSancionado: Option[String] = None,
                          nomeSancionado: Option[String] = None,
@@ -214,7 +208,7 @@ package object domain {
                   linkPublicacao: String,
                   detalhamentoPublicacao: String,
                   numeroProcesso: String,
-                  abrangenciaDefinidaDecisaoJudicial: AbrangenciaDefinidaDecisaoJudicial,
+                  abrangenciaDefinidaDecisaoJudicial: Descricao,
                   informacoesAdicionaisDoOrgaoSancionador: String)
 
   case class ContratoRequest private(dataInicial: LocalDate,
@@ -237,8 +231,8 @@ package object domain {
                                            dataPublicacaoDOU: LocalDate,
                                            dimCompra: DimCompra,
                                            fornecedor: Fornecedor,
-                                           modalidadeCompra: ModalidadeCompra,
-                                           situacaoContrato: SituacaoContrato,
+                                           modalidadeCompra: Descricao,
+                                           situacaoContrato: Descricao,
                                            unidadeGestora: UnidadeGestora,
                                            unidadeGestoraCompras: UnidadeGestoraCompras,
                                            valorFinalCompra: BigDecimal,
@@ -260,7 +254,7 @@ package object domain {
                         dataAbertura: LocalDate,
                         descricaoLogradouro: String,
                         enderecoEletronico: String,
-                        localidadePessoa: LocalidadePessoa,
+                        localidadePessoa: Descricao,
                         municipio: Municipio,
                         naturezaJuridica: NaturezaJuridica,
                         nome: String,
@@ -274,11 +268,7 @@ package object domain {
                         pessoaJuridica: Boolean,
                         razaoSocialReceita: String,
                         tipoCodigo: String,
-                        tipoPessoa: TipoPessoa)
-
-  case class ModalidadeCompra(descricao: String)
-
-  case class SituacaoContrato(descricao: String)
+                        tipoPessoa: Descricao)
 
   case class UnidadeGestora(codigo: String,
                             descricaoPoder: String,
@@ -356,7 +346,7 @@ package object domain {
                                            dataConclusao: Option[LocalDate],
                                            situacao: Situacao,
                                            convenente: Convenente,
-                                           localidadePessoa: LocalidadePessoa,
+                                           localidadePessoa: Descricao,
                                            municipioConvenente: Municipio,
                                            orgao: Option[Orgao],
                                            unidadeGestora: UnidadeGestora,
@@ -376,7 +366,7 @@ package object domain {
                         nomeFantasiaReceita: String,
                         cnae: CNAE,
                         municipio: Municipio,
-                        localidadePessoa: Option[LocalidadePessoa],
+                        localidadePessoa: Option[Descricao],
                         naturezaJuridica: NaturezaJuridica,
                         dataAbertura: Option[LocalDate],
                         enderecoEletronico: String,
@@ -388,7 +378,7 @@ package object domain {
                         nomeBairro: String,
                         tipoCodigo: String,
                         codigoFormatado: String,
-                        tipoPessoa: TipoPessoa)
+                        tipoPessoa: Descricao)
 
   case class Orgao(cnpj: String,
                    codigoSIAFI: String,
@@ -611,13 +601,11 @@ package object domain {
 
   case class CEPIM(id: Long,
                    dataReferencia: LocalDate,
-                   motivo: Motivo,
+                   motivo: Descricao,
                    orgaoSuperior: OrgaoSuperior,
                    pessoaJuridica: Pessoa,
                    convenio: ConvenioCEPIM,
                    codigoConvenio: Option[String])
-
-  case class Motivo(descricao: String)
 
   case class OrgaoSuperior(nome: String,
                            codigoSIAFI: String,
@@ -696,18 +684,14 @@ package object domain {
                                             dataReferencia: LocalDate,
                                             dataPublicacao: LocalDate,
                                             situacaoCompra: SituacaoCompra,
-                                            modalidadeLicitacao: ModalidadeLicitacao,
-                                            instrumentoLegal: Option[InstrumentoLegal],
+                                            modalidadeLicitacao: Descricao,
+                                            instrumentoLegal: Option[Descricao],
                                             valor: BigDecimal,
                                             municipio: Municipio,
                                             unidadeGestora: UnidadeGestora,
                                             licitacao: Licitacao)
 
   case class SituacaoCompra(codigo: Long, descricao: String)
-
-  case class ModalidadeLicitacao(descricao: String)
-
-  case class InstrumentoLegal(descricao: String)
 
   case class Licitacao(numero: String,
                        objeto: String,
@@ -725,4 +709,5 @@ package object domain {
   case class Modalidade(codigo: String, codigoDescricaoFormatado: String, descricao: String)
 
   case class UASG(codigo: String, nome: String, nomeOrgao: String)
+
 }
