@@ -710,4 +710,12 @@ package object domain {
 
   case class UASG(codigo: String, nome: String, nomeOrgao: String)
 
+  case class PETI(id: Long,
+                  dataReferencia: LocalDate,
+                  municipio: Municipio,
+                  quantidadeBeneficiados: Int,
+                  tipo: TipoPETI,
+                  valor: BigDecimal)
+
+  case class TipoPETI(id: Long, descricao: String, descricaoDetalhada: String)
 }
