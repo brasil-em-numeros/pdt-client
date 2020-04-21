@@ -718,4 +718,13 @@ package object domain {
                   valor: BigDecimal)
 
   case class TipoPETI(id: Long, descricao: String, descricaoDetalhada: String)
+
+  case class SeguroDefeso(id: Long,
+                          dataReferencia: LocalDate,
+                          municipio: Municipio,
+                          quantidadeBeneficiados: Int,
+                          tipo: SeguroDefeso,
+                          valor: BigDecimal)
+
+  case class TipoSeguroDefeso(id: Long, descricao: String, descricaoDetalhada: String)
 }
