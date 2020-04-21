@@ -632,10 +632,8 @@ package object domain {
                    dataReferencia: LocalDate,
                    municipio: Municipio,
                    quantidadeBeneficiados: Int,
-                   tipo: TipoSafra,
+                   tipo: Tipo,
                    valor: BigDecimal)
-
-  case class TipoSafra(id: Long, descricao: String, descricaoDetalhada: String)
 
   case class GastoRequest(mesExtratoInicio: Option[YearMonth] = None,
                           mesExtratoFim: Option[YearMonth] = None,
@@ -714,17 +712,13 @@ package object domain {
                   dataReferencia: LocalDate,
                   municipio: Municipio,
                   quantidadeBeneficiados: Int,
-                  tipo: TipoPETI,
+                  tipo: Tipo,
                   valor: BigDecimal)
-
-  case class TipoPETI(id: Long, descricao: String, descricaoDetalhada: String)
 
   case class SeguroDefeso(id: Long,
                           dataReferencia: LocalDate,
                           municipio: Municipio,
                           quantidadeBeneficiados: Int,
-                          tipo: SeguroDefeso,
+                          tipo: Tipo,
                           valor: BigDecimal)
-
-  case class TipoSeguroDefeso(id: Long, descricao: String, descricaoDetalhada: String)
 }
