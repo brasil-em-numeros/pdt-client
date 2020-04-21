@@ -285,7 +285,9 @@ package object domain {
                             nome: String,
                             nomeSemAcento: String,
                             orgaoMaximo: OrgaoMaximo,
-                            orgaoVinculado: OrgaoVinculado)
+                            orgaoVinculado: OrgaoVinculado,
+                            existeFatoDespesa: Option[Boolean],
+                            existeFatoReceita: Option[Boolean])
 
   case class OrgaoMaximo(codigo: String, nome: String, sigla: String)
 
@@ -682,4 +684,45 @@ package object domain {
                                  orgaoMaximo: OrgaoMaximo)
 
   case class Portador(codigoFormatado: String, nome: String)
+
+  case class LicitacaoRequest(dataInicial: LocalDate,
+                              dataFinal: LocalDate,
+                              codigoOrgao: String,
+                              pagina: Int = 1)
+
+  case class LicitacaoPoderExecutivoFederal(id: Long,
+                                            dataResultadoCompra: LocalDate,
+                                            dataAbertura: LocalDate,
+                                            dataReferencia: LocalDate,
+                                            dataPublicacao: LocalDate,
+                                            situacaoCompra: SituacaoCompra,
+                                            modalidadeLicitacao: ModalidadeLicitacao,
+                                            instrumentoLegal: Option[InstrumentoLegal],
+                                            valor: BigDecimal,
+                                            municipio: Municipio,
+                                            unidadeGestora: UnidadeGestora,
+                                            licitacao: Licitacao)
+
+  case class SituacaoCompra(codigo: Long, descricao: String)
+
+  case class ModalidadeLicitacao(descricao: String)
+
+  case class InstrumentoLegal(descricao: String)
+
+  case class Licitacao(numero: String,
+                       objeto: String,
+                       numeroProcesso: String,
+                       contatoResponsavel: String)
+
+  case class UASGModalidadeRequest(codigoUASG: String, numero: String, codigoModalidade: String)
+
+  case class Empenho(dataEmissao: LocalDate,
+                     empenho: String,
+                     empenhoResumido: String,
+                     observacao: String,
+                     valor: BigDecimal)
+
+  case class Modalidade(codigo: String, codigoDescricaoFormatado: String, descricao: String)
+
+  case class UASG(codigo: String, nome: String, nomeOrgao: String)
 }

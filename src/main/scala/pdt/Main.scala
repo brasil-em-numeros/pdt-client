@@ -1,6 +1,6 @@
 package pdt
 
-import java.time.YearMonth
+import java.time.{LocalDate, YearMonth}
 import java.util.concurrent.TimeUnit
 
 import org.http4s.client.Client
@@ -45,12 +45,12 @@ object Main extends App {
     val httpClientLayer = http4sClient.toLayer.orDie
     val http4sClientLayer = (loggerLayer ++ httpClientLayer) >>> HttpClient.http4s
 
-    val inicio = Some(YearMonth.of(2019, 1))
-    val fim = Some(YearMonth.of(2019, 12))
+    val inicio = LocalDate.of(2019, 4, 1)
+    val fim = LocalDate.of(2019, 4, 30)
 
     val program = for {
       start <- currentTime(TimeUnit.MILLISECONDS)
-      result <- GastosCartaoPagamento.by(GastoRequest(inicio, fim))
+      result <- Licitacoes.by(314406224)
 
       finish <- currentTime(TimeUnit.MILLISECONDS)
       _ <- putStrLn(result.toString())

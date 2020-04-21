@@ -38,6 +38,12 @@ object decoders {
 
   implicit val motivoDecoder: Decoder[Motivo] = decoderForPossiblyWrappedValue(Motivo)
 
+  implicit val modalidadeLicitacaoDecoder: Decoder[ModalidadeLicitacao] =
+    decoderForPossiblyWrappedValue(ModalidadeLicitacao)
+
+  implicit val instrumentoLegalDecoder: Decoder[InstrumentoLegal] =
+    decoderForPossiblyWrappedValue(InstrumentoLegal)
+
   private def decoderForPossiblyWrappedValue[A](f: String => A): Decoder[A] =
     Decoder.decodeJsonObject.map(_.apply("descricao")).map {
       case Some(json) => f(json.asString.get)
