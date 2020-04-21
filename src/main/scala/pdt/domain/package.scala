@@ -37,7 +37,7 @@ package object domain {
 
   case class Nis(codigo: String, pagina: Int = 1)
 
-  case class BPCRequest(mesAno: YearMonth, codigoIbge: String, pagina: Int = 1)
+  case class MunicipioRequest(mesAno: YearMonth, codigoIbge: String, pagina: Int = 1)
 
   case class Uf(sigla: String, nome: String)
 
@@ -77,8 +77,6 @@ package object domain {
                           tipo: Tipo,
                           valor: Double,
                           quantidadeBeneficiados: Long)
-
-  case class BolsaFamiliaRequest(mesAno: YearMonth, codigoIbge: String, pagina: Int = 1)
 
   case class CEAFRequest(cpfSancionado: Option[String] = None,
                          nomeSancionado: Option[String] = None,
@@ -628,4 +626,24 @@ package object domain {
                            orgaoMaximo: OrgaoMaximo)
 
   case class ConvenioCEPIM(codigo: String, objeto: String, numero: String)
+
+  case class BeneficioSafra(id: Long,
+                            beneficiarioSafra: BeneficiarioSafra,
+                            dataMesReferencia: LocalDate,
+                            municipio: Municipio,
+                            valor: BigDecimal)
+
+  case class BeneficiarioSafra(cpfFormatado: String,
+                               multiploCadastro: Boolean,
+                               nis: String,
+                               nome: String)
+
+  case class Safra(id: Long,
+                   dataReferencia: LocalDate,
+                   municipio: Municipio,
+                   quantidadeBeneficiados: Int,
+                   tipo: TipoSafra,
+                   valor: BigDecimal)
+
+  case class TipoSafra(id: Long, descricao: String, descricaoDetalhada: String)
 }

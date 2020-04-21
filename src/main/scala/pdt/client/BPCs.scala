@@ -9,8 +9,8 @@ import zio.RIO
 
 object BPCs {
 
-  def by(request: BPCRequest): RIO[HttpClient, List[BPC]] =
-    get[BPC]("bpc-por-municipio", request.parameters)
+  def by(municipio: MunicipioRequest): RIO[HttpClient, List[BPC]] =
+    get[BPC]("bpc-por-municipio", municipio.parameters)
 
   def by(cpf: Cpf): RIO[HttpClient, List[BPC]] =
     get[BPC]("bpc-por-cpf-ou-nis", cpf.parameters)
