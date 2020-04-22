@@ -14,6 +14,7 @@ lazy val root = (project in file("."))
         zio,
         zioStreams,
         zioInteropCats,
+        zioLogging,
         http4sDsl,
         http4sClient,
         http4sCirce,

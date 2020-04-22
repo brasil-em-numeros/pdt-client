@@ -8,11 +8,11 @@ import org.http4s.client.blaze.BlazeClientBuilder
 import pdt.client._
 import pdt.domain._
 import pdt.http.HttpClient
-import pdt.log.Logger
 import zio._
 import zio.clock._
 import zio.console.putStrLn
 import zio.interop.catz._
+import zio.logging.Logging
 
 import scala.concurrent.ExecutionContext.Implicits
 
@@ -40,7 +40,10 @@ object Main extends App {
       }
 
   private def makeProgram(http4sClient: TaskManaged[Client[Task]]): RIO[ZEnv, Unit] = {
-    val loggerLayer = Logger.console
+    val loggerLayer = Logging.console(
+      format = (_, logEntry) => logEntry,
+      rootLoggerName = Some("pdt-client")
+    )
 
     val httpClientLayer = http4sClient.toLayer.orDie
     val http4sClientLayer = (loggerLayer ++ httpClientLayer) >>> HttpClient.http4s
