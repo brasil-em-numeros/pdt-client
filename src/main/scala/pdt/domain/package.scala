@@ -41,7 +41,7 @@ package object domain {
 
   case class Uf(sigla: String, nome: String)
 
-  case class Tipo(id: Long, descricao: String, descricaoDetalhada: String)
+  case class Tipo(id: Long, descricao: String, descricaoDetalhada: Option[String])
 
   case class Municipio(codigoIBGE: String,
                        nomeIBGE: String,
@@ -721,4 +721,160 @@ package object domain {
                           quantidadeBeneficiados: Int,
                           tipo: Tipo,
                           valor: BigDecimal)
+
+  case class ServidorFederalRequest(tipoServidor: Option[Int] = None,
+                                    codigoSituacaoVinculo: Option[String] = None,
+                                    cpf: Option[String] = None,
+                                    nome: Option[String] = None,
+                                    codigoFuncaoCargo: Option[String] = None,
+                                    orgaoServidorExercicio: Option[String] = None,
+                                    orgaoServidorLotacao: Option[String] = None,
+                                    pagina: Int = 1)
+
+  case class ServidorFederal(servidor: Servidor,
+                             fichasCargoEfetivo: List[Ficha],
+                             fichasFuncao: List[Ficha],
+                             fichasMilitar: List[Ficha],
+                             fichasDemaisSituacoes: List[Ficha])
+
+  case class Servidor(id: Long,
+                      pessoa: Pessoa,
+                      situacao: Situacao,
+                      orgaoServidorLotacao: Option[OrgaoServidor],
+                      orgaoServidorExercicio: Option[OrgaoServidor],
+                      estadoExercicio: EstadoExercicio,
+                      tipoServidor: Tipo,
+                      funcao: FuncaoServidor,
+                      matriculaFormatada: String)
+
+  case class OrgaoServidor(codigo: String,
+                           nome: String,
+                           sigla: String,
+                           idOrgaoVinculado: Long,
+                           codigoOrgaoVinculado: String,
+                           nomeOrgaoVinculado: String)
+
+  case class EstadoExercicio(codigoIBGE: String, codigoCNPJEstado: String, populacao: Long, uf: Uf)
+
+  case class FuncaoServidor(id: Long,
+                            sigla: String,
+                            descricao: String,
+                            nivel: String,
+                            codigoAtividade: String)
+
+  case class Ficha(nome: String,
+                   cpfDescaracterizado: String,
+                   matriculaDescaracterizada: String,
+                   dataPublicacaoDocumentoIngressoServicoPublico: Option[LocalDate],
+                   diplomaLegal: String,
+                   jornadaTrabalho: String,
+                   regimeJuridico: String,
+                   situacaoServidor: String,
+                   afastamentos: List[String],
+                   orgaoSuperiorLotacao: String,
+                   orgaoLotacao: String,
+                   uorgLotacao: String,
+                   orgaoServidorLotacao: String,
+                   dataIngressoOrgao: LocalDate,
+                   dataIngressoServicoPublico: Option[LocalDate],
+                   orgaoSuperiorExercicio: String,
+                   orgaoExercicio: String,
+                   orgaoServidorExercicio: String,
+                   uorgExercicio: String,
+                   cargo: String,
+                   classeCargo: String,
+                   padraoCargo: String,
+                   nivelCargo: String,
+                   dataIngressoCargo: LocalDate,
+                   formaIngresso: String,
+                   ufExercicio: String)
+
+  case class FuncaoCargo(codigoFuncaoCargo: String, descricaoFuncaoCargo: String)
+
+  case class ServidorPorOrgaoRequest(orgaoLotacao: Option[String] = None,
+                                     orgaoExercicio: Option[String] = None,
+                                     tipoServidor: Option[Int] = None,
+                                     tipoVinculo: Option[Int] = None,
+                                     licenca: Option[Int] = None,
+                                     pagina: Int = 1)
+
+  case class ServidorPorOrgao(qntPessoas: Int,
+                              qntVinculos: Int,
+                              skTipoVinculo: Int,
+                              descTipoVinculo: String,
+                              skTipoServidor: Int,
+                              descTipoServidor: String,
+                              licenca: Int,
+                              codOrgaoExercicioSiape: String,
+                              nomOrgaoExercicioSiape: String,
+                              codOrgaoSuperiorExercicioSiape: String,
+                              nomOrgaoSuperiorExercicioSiape: String)
+
+  case class RemuneracaoRequest(cpf: String, mesAno: YearMonth, pagina: Int = 1)
+
+  case class RemuneracaoServidorFederal(remuneracoesDTO: List[Remuneracao], servidor: Servidor)
+
+  case class Remuneracao(abateGratificacaoNatalina: String,
+                         abateGratificacaoNatalinaDolar: String,
+                         abateRemuneracaoBasicaBruta: String,
+                         abateRemuneracaoBasicaBrutaDolar: String,
+                         ferias: String,
+                         feriasDolar: String,
+                         fundoSaude: String,
+                         fundoSaudeDolar: String,
+                         gratificacaoNatalina: String,
+                         gratificacaoNatalinaDolar: String,
+                         honorariosAdvocaticios: List[HonorarioAdvocaticio],
+                         impostoRetidoNaFonte: String,
+                         impostoRetidoNaFonteDolar: String,
+                         jetons: List[Jetom],
+                         mesAno: YearMonth,
+                         mesAnoPorExtenso: String,
+                         observacoes: List[String],
+                         outrasDeducoesObrigatorias: String,
+                         outrasDeducoesObrigatoriasDolar: String,
+                         outrasRemuneracoesEventuais: String,
+                         outrasRemuneracoesEventuaisDolar: String,
+                         pensaoMilitar: String,
+                         pensaoMilitarDolar: String,
+                         previdenciaOficial: String,
+                         previdenciaOficialDolar: String,
+                         remuneracaoBasicaBruta: String,
+                         remuneracaoBasicaBrutaDolar: String,
+                         rubricas: List[Rubrica],
+                         skMesReferencia: String,
+                         taxaOcupacaoImovelFuncional: String,
+                         taxaOcupacaoImovelFuncionalDolar: String,
+                         valorTotalHonorariosAdvocaticios: String,
+                         valorTotalJetons: String,
+                         valorTotalRemuneracaoAposDeducoes: String,
+                         valorTotalRemuneracaoDolarAposDeducoes: String,
+                         verbasIndenizatorias: String,
+                         verbasIndenizatoriasCivil: String,
+                         verbasIndenizatoriasCivilDolar: String,
+                         verbasIndenizatoriasDolar: String,
+                         verbasIndenizatoriasMilitar: String,
+                         verbasIndenizatoriasMilitarDolar: String,
+                         verbasIndenizatoriasReferentesPDV: String,
+                         verbasIndenizatoriasReferentesPDVDolar: String,
+                        )
+
+  case class HonorarioAdvocaticio(mesReferencia: String,
+                                  skMesReferencia: String,
+                                  valor: BigDecimal,
+                                  valorFormatado: String)
+
+  case class Jetom(descricao: String,
+                   skMesReferencia: String,
+                   valor: BigDecimal,
+                   valorFormatado: String,
+                   valorJetom: String)
+
+  case class Rubrica(codigo: String,
+                     descricao: String,
+                     skMesReferencia: String,
+                     valor: BigDecimal,
+                     valorDolar: BigDecimal,
+                     valorFormatado: String)
+
 }

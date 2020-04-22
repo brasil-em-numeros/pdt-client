@@ -48,9 +48,11 @@ object Main extends App {
     val inicio = LocalDate.of(2019, 4, 1)
     val fim = LocalDate.of(2019, 4, 30)
 
+    val anoMes = YearMonth.of(2020, 1)
+
     val program = for {
       start <- currentTime(TimeUnit.MILLISECONDS)
-      result <- CEAFs.by(CEAFRequest())
+      result <- ServidoresFederais.by(415210208)
 
       finish <- currentTime(TimeUnit.MILLISECONDS)
       _ <- putStrLn(result.toString())
