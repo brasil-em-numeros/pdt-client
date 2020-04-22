@@ -18,19 +18,19 @@ object HttpClient {
   }
 
   def get[T](resource: String, parameters: Map[String, String] = Map())
-            (implicit d: Decoder[T]): RIO[HttpClient, List[T]] =
+            (implicit d: Decoder[T]): Response[List[T]] =
     RIO.accessM[HttpClient](_.get.get[List[T]](resource, parameters))
 
   def get[T](resource: String, id: Long)
-            (implicit d: Decoder[T]): RIO[HttpClient, T] =
+            (implicit d: Decoder[T]): Response[T] =
     get[T](resource, id.toString)
 
   def get[T](resource: String, pathParameter: String)
-            (implicit d: Decoder[T]): RIO[HttpClient, T] =
+            (implicit d: Decoder[T]): Response[T] =
     RIO.accessM[HttpClient](_.get.get[T](s"$resource/$pathParameter", Map()))
 
   def get[T](resource: String, pathParameter: String, parameters: Map[String, String])
-            (implicit d: Decoder[T]): RIO[HttpClient, List[T]] =
+            (implicit d: Decoder[T]): Response[List[T]] =
     get[T](s"$resource/$pathParameter", parameters)
 
   def http4s: URLayer[Logging with Has[Client[Task]], HttpClient] =
