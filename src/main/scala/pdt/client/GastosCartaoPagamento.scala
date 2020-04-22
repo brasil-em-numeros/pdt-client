@@ -4,14 +4,13 @@ import java.time.format.DateTimeFormatter
 
 import io.circe.generic.auto._
 import pdt.client.decoders._
-import pdt.http.HttpClient.{HttpClient, get}
 import pdt.domain._
+import pdt.http.HttpClient.{Response, get}
 import pdt.http.implicits.HttpRequestOps
-import zio.RIO
 
 object GastosCartaoPagamento {
 
-  def by(request: GastoRequest): RIO[HttpClient, List[Gasto]] = {
+  def by(request: GastoRequest): Response[List[Gasto]] = {
     implicit val yearMonthFormatter = DateTimeFormatter.ofPattern("MM/yyyy")
     get[Gasto]("cartoes", request.parameters)
   }

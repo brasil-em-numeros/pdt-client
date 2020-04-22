@@ -9,6 +9,8 @@ import zio._
 object HttpClient {
   type HttpClient = Has[Service]
 
+  type Response[T] = RIO[HttpClient, T]
+
   trait Service {
     protected final val rootUrl = "http://www.transparencia.gov.br/api-de-dados/"
 

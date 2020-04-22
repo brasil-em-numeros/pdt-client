@@ -2,25 +2,24 @@ package pdt.client
 
 import io.circe.generic.auto._
 import pdt.client.decoders._
-import pdt.http.HttpClient.{HttpClient, get}
 import pdt.domain._
+import pdt.http.HttpClient.{Response, get}
 import pdt.http.implicits.HttpRequestOps
-import zio.RIO
 
 object ServidoresFederais {
 
-  def by(request: ServidorFederalRequest): RIO[HttpClient, List[ServidorFederal]] =
+  def by(request: ServidorFederalRequest): Response[List[ServidorFederal]] =
     get[ServidorFederal]("servidores", request.parameters)
 
-  def by(id: Long): RIO[HttpClient, ServidorFederal] =
+  def by(id: Long): Response[ServidorFederal] =
     get[ServidorFederal]("servidores", id)
 
-  def funcoesCargos(): RIO[HttpClient, List[FuncaoCargo]] =
+  def funcoesCargos(): Response[List[FuncaoCargo]] =
     get[FuncaoCargo]("servidores/funcoes-e-cargos")
 
-  def porOrgao(request: ServidorPorOrgaoRequest): RIO[HttpClient, List[ServidorPorOrgao]] =
+  def porOrgao(request: ServidorPorOrgaoRequest): Response[List[ServidorPorOrgao]] =
     get[ServidorPorOrgao]("servidores/por-orgao", request.parameters)
 
-  def remuneracoes(request: RemuneracaoRequest): RIO[HttpClient, List[RemuneracaoServidorFederal]] =
+  def remuneracoes(request: RemuneracaoRequest): Response[List[RemuneracaoServidorFederal]] =
     get[RemuneracaoServidorFederal]("servidores/remuneracao", request.parameters)
 }

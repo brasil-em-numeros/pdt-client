@@ -1,17 +1,17 @@
 package pdt.client
 
 import io.circe.generic.auto._
-import pdt.http.HttpClient.{HttpClient, get}
-import pdt.domain.{OrgaoRequest, OrgaoSiafi, OrgaoSiape}
+import pdt.domain._
+import pdt.http.HttpClient.{Response, get}
 import pdt.http.implicits.HttpRequestOps
-import zio.{RIO, ZIO}
+import zio.ZIO
 
 object Orgaos {
 
-  def siafi(request: OrgaoRequest): RIO[HttpClient, List[OrgaoSiafi]] =
+  def siafi(request: OrgaoRequest): Response[List[OrgaoSiafi]] =
     get[OrgaoSiafi]("orgaos-siafi", request.parameters)
 
-  def siafi: RIO[HttpClient, List[OrgaoSiafi]] = {
+  def siafi: Response[List[OrgaoSiafi]] = {
     val tasks = (1 to 42).map(p => siafi(OrgaoRequest(p)))
 
     ZIO.collectAllPar(tasks)
@@ -20,10 +20,10 @@ object Orgaos {
         a => ZIO.succeed(a.flatten))
   }
 
-  def siape(request: OrgaoRequest): RIO[HttpClient, List[OrgaoSiape]] =
+  def siape(request: OrgaoRequest): Response[List[OrgaoSiape]] =
     get[OrgaoSiape]("orgaos-siape", request.parameters)
 
-  def siape: RIO[HttpClient, List[OrgaoSiape]] = {
+  def siape: Response[List[OrgaoSiape]] = {
     val tasks = (1 to 42).map(p => siape(OrgaoRequest(p)))
 
     ZIO.collectAllPar(tasks)

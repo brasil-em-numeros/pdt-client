@@ -2,20 +2,20 @@ package pdt.client
 
 import io.circe.generic.auto._
 import pdt.client.decoders.localDateDecoder
-import pdt.http.HttpClient.{HttpClient, get}
 import pdt.domain.{AcordoLeniencia, AcordoLenienciaRequest}
+import pdt.http.HttpClient.{Response, get}
 import pdt.http.implicits.HttpRequestOps
-import zio.{RIO, ZIO}
+import zio.ZIO
 
 object AcordosLeniencia {
 
-  def by(id: Long): RIO[HttpClient, AcordoLeniencia] =
+  def by(id: Long): Response[AcordoLeniencia] =
     get[AcordoLeniencia]("acordos-leniencia", id)
 
-  def by(request: AcordoLenienciaRequest): RIO[HttpClient, List[AcordoLeniencia]] =
+  def by(request: AcordoLenienciaRequest): Response[List[AcordoLeniencia]] =
     get[AcordoLeniencia]("acordos-leniencia", request.parameters)
 
-  def all: RIO[HttpClient, List[AcordoLeniencia]] = {
+  def all: Response[List[AcordoLeniencia]] = {
     val tasks = (1 to 5).map(p => by(AcordoLenienciaRequest(pagina = p)))
 
     ZIO.collectAllPar(tasks)
