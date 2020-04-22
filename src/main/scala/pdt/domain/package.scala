@@ -877,4 +877,43 @@ package object domain {
                      valorDolar: BigDecimal,
                      valorFormatado: String)
 
+  case class ViagemRequest(dataIdaDe: LocalDate,
+                           dataIdaAte: LocalDate,
+                           dataRetornoDe: LocalDate,
+                           dataRetornoAte: LocalDate,
+                           codigoOrgao: String,
+                           pagina: Int = 1)
+
+  case class Viagem(id: Long,
+                    beneficiario: Beneficiario,
+                    cargo: Cargo,
+                    dataInicioAfastamento: LocalDate,
+                    dataFimAfastamento: LocalDate,
+                    dimViagem: DimViagem,
+                    orgao: Orgao,
+                    orgaoPagamento: Orgao,
+                    pessoa: Pessoa,
+                    situacao: SituacaoViagem,
+                    tipoViagem: Tipo,
+                    unidadeGestoraResponsavel: UnidadeGestora,
+                    valorMulta: BigDecimal,
+                    valorTotalDevolucao: BigDecimal,
+                    valorTotalDiarias: BigDecimal,
+                    valorTotalPassagem: BigDecimal,
+                    valorTotalRestituicao: BigDecimal,
+                    valorTotalTaxaAgenciamento: BigDecimal,
+                    valorTotalViagem: BigDecimal)
+
+  case class Beneficiario(id: Long,
+                          nome: String,
+                          nomeSemAcento: String,
+                          cpf: String,
+                          cpfFormatado: String)
+
+  case class Cargo(id: Long, descricao: String, codigoSIAPE: String)
+
+  case class DimViagem(id: Long, motivo: String, ano: Int, pcdp: String)
+
+  case class SituacaoViagem(id: Long, descricao: String)
+
 }
